@@ -19,6 +19,7 @@ private:
     QTableWidget *m_board;
     QPushButton *newSudokuButton;
 
+    void createEmptySudoku();
     void insertNumber(int row, int col, int number);
     bool isNumberValid(int row, int col, int number);
     bool checkRow(int col, int number);
@@ -31,7 +32,6 @@ public slots:
 
 private slots:
     void slotCreateSudoku();
-    void slotCreateEmptySudoku();
 };
 
 #endif // BOARD_H

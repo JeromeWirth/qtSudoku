@@ -10,6 +10,8 @@ Board::Board(QWidget *parent) : QWidget(parent)
 
     m_board = new QTableWidget(9,9,this);
 
+    createEmptySudoku();
+
     m_board->verticalHeader()->sectionResizeMode(QHeaderView::Fixed);
     m_board->verticalHeader()->setDefaultSectionSize(20);
 
@@ -48,14 +50,12 @@ void Board::slotCreateSudoku() {
     }
 }
 
-void Board::slotCreateEmptySudoku() {
-
+void Board::createEmptySudoku() {
     for(int col = 0; col < 9; col++) {
         for(int row = 0; row < 9; row++) {
             QTableWidgetItem *item = new QTableWidgetItem;
-            item->setText(QString::number(row));
+            item->setText(QString::number(0));
             m_board->setItem(row, col, item);
-            cout << "ROW: " << row << " COL: " << col << endl;
         }
     }
 
@@ -81,14 +81,13 @@ void Board::insertNumber(int row, int col, int number) {
  prüft ob die Zahl ein gültiger Zug ist
 */
 bool Board::isNumberValid(int row, int col, int number) {
-    if (checkCol(row, number)) {
+    if (checkCol(row, number) && checkRow(col, number) && checkBlock(row, col, number)) {
         return true;
     }
     return false;
 }
 
 bool Board::checkCol(int row, int number) {
-    cout << "INSIDE CHECKCOL";
     QString sNumber = QString::number(number);
     for(int col = 0; col < 9; col++) {
         QString temp = m_board->item(row,col)->text();
