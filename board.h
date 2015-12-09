@@ -8,7 +8,6 @@ using namespace std;
 
 class QPushButton;
 class QTableWidget;
-class QTableWidgetItem;
 class Board : public QWidget
 {
     Q_OBJECT

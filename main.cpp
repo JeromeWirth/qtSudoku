@@ -2,6 +2,7 @@
 #include <QHBoxLayout>
 #include "window.h"
 #include "board.h"
+#include "boardlogic.h"
 
 int main(int argc, char **argv) {
     QApplication app (argc, argv);
@@ -34,6 +35,9 @@ int main(int argc, char **argv) {
 
     Board board;
     board.show();
+
+    BoardLogic test;
+    test.printBoard();
 
     return app.exec();
 }
