@@ -3,6 +3,7 @@
 #include "window.h"
 #include "board.h"
 #include "boardlogic.h"
+#include "boardwidget.h"
 
 int main(int argc, char **argv) {
     QApplication app (argc, argv);
@@ -33,11 +34,18 @@ int main(int argc, char **argv) {
 //    // while the sliders value change
 //    QObject::connect(slider, SIGNAL (valueChanged(int)), progressBar, SLOT (setValue(int)));
 
-    Board board;
-    board.show();
+//    Board board;
+//    board.show();
 
-    BoardLogic test;
-    test.printBoard();
+    QWidget window;
+    window.setFixedSize(600, 600);
+
+
+//    Board *newBoard = new Board(&window);
+//    window.show();
+
+    BoardWidget *testWidget = new BoardWidget(&window);
+    window.show();
 
     return app.exec();
 }

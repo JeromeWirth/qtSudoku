@@ -16,6 +16,7 @@ public:
     bool isNumberValid(int row, int col, int number);
     void printBoard();
     int getNumber(int row, int col);
+    void generateEmptySudoku();
 
 private:
     bool checkRow(int col, int number);

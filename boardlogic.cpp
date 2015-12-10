@@ -8,6 +8,14 @@ BoardLogic::BoardLogic() {
     }
 }
 
+void BoardLogic::generateEmptySudoku() {
+    for (int col = 0; col < 9; col++) {
+        for (int row = 0; row < 9; row++) {
+            m_board[row][col] = 0;
+        }
+    }
+}
+
 void BoardLogic::generateSudoku() {
     random_device rd;
     mt19937 rng(rd());
