@@ -6,12 +6,10 @@ QT += widgets
 
 SOURCES += \
     main.cpp \
-    window.cpp \
     boardwidget.cpp \
     boardlogic.cpp
 
 HEADERS += \
-    window.h \
     boardwidget.h \
     boardlogic.h
 
