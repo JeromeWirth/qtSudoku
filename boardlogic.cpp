@@ -29,11 +29,13 @@ void BoardLogic::generateSudoku() {
     }
 }
 
-void BoardLogic::insertNumber(int row, int col, int number) {
+bool BoardLogic::insertNumber(int row, int col, int number) {
     if (isNumberValid(row, col, number)) {
         m_board[col][row] = number;
+        return true;
     } else {
         cout << "Zahl: " << number << "; X: " << row << "; Y: " << col << " wurde an die Falsche stelle gesetzt." << endl;
+        return false;
     }
 }
 
@@ -79,10 +81,10 @@ bool BoardLogic::checkBlock(int row, int col, int number) {
 
 void BoardLogic::printBoard() {
     cout << "  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |" << endl;
-    for (int col = 0; col < 9; col++) {
+    for (int row = 0; row < 9; row++) {
         cout << "----------------------------------------" << endl;
-        cout << col+1 << " ";
-        for(int row = 0; row < 9; row++) {
+        cout << row+1 << " ";
+        for(int col = 0; col < 9; col++) {
             cout << "| " << m_board[row][col] << " ";
         }
         cout << "|" << endl;
@@ -91,5 +93,6 @@ void BoardLogic::printBoard() {
 }
 
 int BoardLogic::getNumber(int row, int col) {
+    cout << "[BoardLogic] Row: " << row << " Col: " << col << " Number: " << m_board[row][col] << endl;
     return m_board[row][col];
 }

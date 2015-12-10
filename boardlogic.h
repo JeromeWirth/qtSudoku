@@ -12,7 +12,7 @@ class BoardLogic
 public:
     BoardLogic();
     void generateSudoku();
-    void insertNumber(int row, int col, int number);
+    bool insertNumber(int row, int col, int number);
     bool isNumberValid(int row, int col, int number);
     void printBoard();
     int getNumber(int row, int col);

@@ -25,6 +25,8 @@ public slots:
 
 private slots:
     void slotCreateNewSudoku();
+    void slotReturnCellNumber(int row, int col);
+    void slotCheckEnteredNumber(int row, int col);
 };
 
 #endif // BOARDWIDGET_H
