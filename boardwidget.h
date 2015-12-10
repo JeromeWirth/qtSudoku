@@ -17,6 +17,7 @@ private:
     QTableWidget *boardWidget;
     BoardLogic *boardLogic;
 
+    void initSudoku();
     void displaySudoku();
 
 signals:

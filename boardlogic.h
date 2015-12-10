@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <random>
+#include <QString>
 
 using namespace std;
 
@@ -13,6 +14,7 @@ public:
     BoardLogic();
     void generateSudoku();
     bool insertNumber(int row, int col, int number);
+    bool insertNumber(int row, int col, QString number);
     bool isNumberValid(int row, int col, int number);
     void printBoard();
     int getNumber(int row, int col);

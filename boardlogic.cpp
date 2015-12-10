@@ -39,6 +39,14 @@ bool BoardLogic::insertNumber(int row, int col, int number) {
     }
 }
 
+bool BoardLogic::insertNumber(int row, int col, QString number) {
+    if (number.toInt()) {
+        insertNumber(row, col, number.toInt());
+        return true;
+    }
+    return false;
+}
+
 bool BoardLogic::isNumberValid(int row, int col, int number) {
     if (checkCol(row, number) && checkRow(col, number) && checkBlock(row, col, number)) {
         return true;
@@ -62,7 +70,6 @@ bool BoardLogic::checkRow(int col, int number) {
       }
     }
     return true;
-
 }
 
 bool BoardLogic::checkBlock(int row, int col, int number) {
@@ -93,6 +100,5 @@ void BoardLogic::printBoard() {
 }
 
 int BoardLogic::getNumber(int row, int col) {
-    cout << "[BoardLogic] Row: " << row << " Col: " << col << " Number: " << m_board[row][col] << endl;
     return m_board[row][col];
 }
