@@ -11,18 +11,18 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 
     boardWidget = new QTableWidget(9,9,this);
 
-    boardWidget->verticalHeader()->sectionResizeMode(QHeaderView::Fixed);
     boardWidget->verticalHeader()->setDefaultSectionSize(20);
+    boardWidget->verticalHeader()->sectionResizeMode(QHeaderView::Fixed);
 
-    boardWidget->horizontalHeader()->sectionResizeMode(QHeaderView::Fixed);
     boardWidget->horizontalHeader()->setDefaultSectionSize(20);
+    boardWidget->horizontalHeader()->sectionResizeMode(QHeaderView::Fixed);
 
     boardWidget->setFixedSize(200,210);
 
     initSudoku();
 
     newSudokuButton = new QPushButton("New Sudoku", this);
-    newSudokuButton->setGeometry(300, 10, 100, 20);
+    newSudokuButton->setGeometry(200, 10, 100, 20);
 
     connect(newSudokuButton, SIGNAL (clicked()), this, SLOT (slotCreateNewSudoku()));
     connect(boardWidget, SIGNAL (cellClicked(int,int)), this, SLOT (slotReturnCellNumber(int,int)));
@@ -42,8 +42,6 @@ void BoardWidget::initSudoku() {
 
 void BoardWidget::displaySudoku() {
     const QSignalBlocker blocker(boardWidget);
-
-    boardLogic->printBoard();
 
     Qt::ItemFlags flags;
 

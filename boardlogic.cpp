@@ -31,15 +31,15 @@ void BoardLogic::generateSudoku() {
 
 bool BoardLogic::insertNumber(int row, int col, int number) {
     if (isNumberValid(row, col, number)) {
-        m_board[col][row] = number;
+        m_board[row][col] = number;
         return true;
     } else {
-        cout << "Zahl: " << number << "; X: " << row << "; Y: " << col << " wurde an die Falsche stelle gesetzt." << endl;
+        cout << "Zahl: " << number << "; Row: " << row << "; Col: " << col << " wurde an die Falsche stelle gesetzt." << endl;
         return false;
     }
 }
 
-bool BoardLogic::insertNumber(int row, int col, QString number) {
+bool BoardLogic::insertNumber(int col, int row, QString number) {
     if (number.toInt()) {
         insertNumber(row, col, number.toInt());
         return true;
@@ -48,7 +48,7 @@ bool BoardLogic::insertNumber(int row, int col, QString number) {
 }
 
 bool BoardLogic::isNumberValid(int row, int col, int number) {
-    if (checkCol(row, number) && checkRow(col, number) && checkBlock(row, col, number)) {
+    if (checkCol(row, number) && checkRow(col, number) && checkBlock(row, col, number) && number < 10 && number > 0) {
         return true;
     }
     return false;
