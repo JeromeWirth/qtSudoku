@@ -7,11 +7,13 @@ QT += widgets
 SOURCES += \
     main.cpp \
     boardwidget.cpp \
-    boardlogic.cpp
+    boardlogic.cpp \
+    timer.cpp
 
 HEADERS += \
     boardwidget.h \
-    boardlogic.h
+    boardlogic.h \
+    timer.h
 
 CONFIG += c++11
 QMAKE_CXXFLAGS += -std=c++0x

@@ -9,11 +9,13 @@ class QTableWidget;
 class BoardWidget : public QWidget
 {
     Q_OBJECT
+
 public:
     explicit BoardWidget(QWidget *parent = 0);
 
 private:
     QPushButton *newSudokuButton;
+    QPushButton *one, *two, *three, *four, *five, *six, *seven, *eight, *nine;
     QTableWidget *boardWidget;
     BoardLogic *boardLogic;
 
