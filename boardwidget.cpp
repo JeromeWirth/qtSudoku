@@ -17,12 +17,15 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
     boardWidget->horizontalHeader()->setDefaultSectionSize(20);
     boardWidget->horizontalHeader()->sectionResizeMode(QHeaderView::Fixed);
 
-    boardWidget->setFixedSize(200,210);
+    boardWidget->setGeometry(0, 50, 200, 210);
 
     initSudoku();
 
     newSudokuButton = new QPushButton("New Sudoku", this);
     newSudokuButton->setGeometry(200, 10, 100, 20);
+
+    timer = new Timer(this);
+    timer->setGeometry(120,0,80,40);
 
     connect(newSudokuButton, SIGNAL (clicked()), this, SLOT (slotCreateNewSudoku()));
     connect(boardWidget, SIGNAL (cellClicked(int,int)), this, SLOT (slotReturnCellNumber(int,int)));

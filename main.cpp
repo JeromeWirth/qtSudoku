@@ -10,8 +10,5 @@ int main(int argc, char **argv) {
     BoardWidget *sudoku = new BoardWidget();
     sudoku->show();
 
-    Timer *test = new Timer();
-    test->show();
-
     return app.exec();
 }

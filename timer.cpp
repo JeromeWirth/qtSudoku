@@ -12,8 +12,7 @@ Timer::Timer(QWidget *parent) : QLCDNumber(parent)
 
     showTime();
 
-    setWindowTitle(tr("Digitial Timer"));
-    resize(150, 60);
+    resize(80, 40);
 }
 
 
