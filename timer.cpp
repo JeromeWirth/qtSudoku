@@ -4,24 +4,26 @@
 
 Timer::Timer(QWidget *parent) : QLCDNumber(parent)
 {
-    setSegmentStyle(Filled);
+    m_timer = new QTimer();
+    m_timeValue = new QTime(0, 0, 0);
 
-    QTimer *qTimer = new QTimer(this);
-    connect(qTimer, SIGNAL(timeout()), this, SLOT (showTime()));
-    qTimer->start(1000);
+    this->setParent(parent);
+    this->display(m_timeValue->toString());
 
-    showTime();
+    m_timer->start(1000);
 
-    resize(80, 40);
+    connect(m_timer, SIGNAL(timeout()), this, SLOT(slotShowTime()));
 }
 
 
-void Timer::showTime() {
-    QTime time;
-    time.restart();
-    QString text = time.toString("hh:mm");
-    if ((time.second() % 2) == 0) {
-        text[2] = ' ';
-    }
-    display(text);
+void Timer::slotShowTime() {
+    this->m_timeValue->setHMS(0,this->m_timeValue->addSecs(1).minute(),
+                            this->m_timeValue->addSecs(1).second());
+    this->display(this->m_timeValue->toString());
+
+}
+
+void Timer::slotResetTime() {
+    this->m_timeValue->setHMS(0,0,0);
+    this->display(this->m_timeValue->toString());
 }

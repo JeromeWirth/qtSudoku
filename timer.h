@@ -10,12 +10,17 @@ class Timer : public QLCDNumber
 public:
     Timer(QWidget *parent = 0);
 
+private:
+    QTimer *m_timer;
+    QTime *m_timeValue;
+
 signals:
 
 public slots:
 
 private slots:
-    void showTime();
+    void slotShowTime();
+    void slotResetTime();
 };
 
 #endif // TIMER_H
