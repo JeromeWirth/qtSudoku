@@ -28,6 +28,7 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
     timer->setGeometry(120,0,80,40);
 
     connect(newSudokuButton, SIGNAL (clicked()), this, SLOT (slotCreateNewSudoku()));
+    connect(newSudokuButton, SIGNAL (clicked()), timer, SLOT(slotResetTime()));
     connect(boardWidget, SIGNAL (cellClicked(int,int)), this, SLOT (slotReturnCellNumber(int,int)));
     connect(boardWidget, SIGNAL (cellChanged(int,int)), this, SLOT (slotCheckEnteredNumber(int,int)));
 }
