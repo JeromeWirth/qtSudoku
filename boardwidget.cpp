@@ -29,6 +29,7 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 
     connect(newSudokuButton, SIGNAL (clicked()), this, SLOT (slotCreateNewSudoku()));
     connect(newSudokuButton, SIGNAL (clicked()), timer, SLOT(slotResetTime()));
+
     connect(boardWidget, SIGNAL (cellClicked(int,int)), this, SLOT (slotReturnCellNumber(int,int)));
     connect(boardWidget, SIGNAL (cellChanged(int,int)), this, SLOT (slotCheckEnteredNumber(int,int)));
 }
@@ -86,7 +87,7 @@ void BoardWidget::slotReturnCellNumber(int row, int col) {
 }
 
 void BoardWidget::slotCheckEnteredNumber(int row, int col) {
-    // Store the entered in a QString
+    // Store the entered Number in a QString
     QString qNumber = boardWidget->item(row, col)->text();
     boardLogic->insertNumber(row, col, qNumber.toInt());
     displaySudoku();
