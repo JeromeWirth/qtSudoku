@@ -19,16 +19,16 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 
     boardWidget->setGeometry(0, 50, 200, 210);
 
+    scoreWidget = new ScoreWidget(this);
+    scoreWidget->setGeometry(200, 20, 200, 10);
+
+
     initSudoku();
 
     newSudokuButton = new QPushButton("New Sudoku", this);
     newSudokuButton->setGeometry(200, 10, 100, 20);
 
-    timer = new Timer(this);
-    timer->setGeometry(120,0,80,40);
-
     connect(newSudokuButton, SIGNAL (clicked()), this, SLOT (slotCreateNewSudoku()));
-    connect(newSudokuButton, SIGNAL (clicked()), timer, SLOT(slotResetTime()));
 
     connect(boardWidget, SIGNAL (cellClicked(int,int)), this, SLOT (slotReturnCellNumber(int,int)));
     connect(boardWidget, SIGNAL (cellChanged(int,int)), this, SLOT (slotCheckEnteredNumber(int,int)));

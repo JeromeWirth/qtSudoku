@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include "boardlogic.h"
-#include <timer.h>
+#include "scorewidget.h"
 
 class QPushButton;
 class QTableWidget;
@@ -19,7 +19,7 @@ private:
     QPushButton *one, *two, *three, *four, *five, *six, *seven, *eight, *nine;
     QTableWidget *boardWidget;
     BoardLogic *boardLogic;
-    Timer *timer;
+    ScoreWidget *scoreWidget;
 
     void initSudoku();
     void displaySudoku();
