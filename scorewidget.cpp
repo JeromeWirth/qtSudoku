@@ -7,6 +7,7 @@ ScoreWidget::ScoreWidget(QWidget *parent) : QWidget(parent)
     scoreLogic = new ScoreLogic();
     scoreLabel = new QLabel(this);
     multiplierLabel = new QLabel(this);
+    timerWidget = new TimerWidget(this);
 
     QString scoreString = "Score: " + QString::number(scoreLogic->getScore());
     QString multiplierString = "x" + QString::number(scoreLogic->getMultiplier());
@@ -16,6 +17,8 @@ ScoreWidget::ScoreWidget(QWidget *parent) : QWidget(parent)
 
     multiplierLabel->setText(multiplierString);
     multiplierLabel->setGeometry(75, 10, 40, 10);
+
+    timerWidget->setGeometry(125, 10, 50, 10);
 
 }
 

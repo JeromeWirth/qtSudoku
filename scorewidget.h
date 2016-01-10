@@ -2,9 +2,10 @@
 #define SCOREWIDGET_H
 
 #include <QWidget>
+#include <QLabel>
 #include "scorelogic.h"
+#include "timerwidget.h"
 
-class QLabel;
 class ScoreWidget : public QWidget
 {
 public:
@@ -14,6 +15,7 @@ private:
     ScoreLogic *scoreLogic;
     QLabel *scoreLabel;
     QLabel *multiplierLabel;
+    TimerWidget *timerWidget;
 
 signals:
 
