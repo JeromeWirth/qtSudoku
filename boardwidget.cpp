@@ -8,8 +8,8 @@
 BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 {
     boardLogic = new BoardLogic();
-
     boardWidget = new QTableWidget(9,9,this);
+    layout = new QHBoxLayout;
 
     boardWidget->verticalHeader()->setDefaultSectionSize(20);
     boardWidget->verticalHeader()->sectionResizeMode(QHeaderView::Fixed);
@@ -17,18 +17,12 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
     boardWidget->horizontalHeader()->setDefaultSectionSize(20);
     boardWidget->horizontalHeader()->sectionResizeMode(QHeaderView::Fixed);
 
-    boardWidget->setGeometry(0, 50, 200, 210);
+    layout->addWidget(boardWidget);
 
-    scoreWidget = new ScoreWidget(this);
-    scoreWidget->setGeometry(200, 20, 200, 10);
-
+    this->setLayout(layout);
+    this->setMinimumHeight(230);
 
     initSudoku();
-
-    newSudokuButton = new QPushButton("New Sudoku", this);
-    newSudokuButton->setGeometry(200, 10, 100, 20);
-
-    connect(newSudokuButton, SIGNAL (clicked()), this, SLOT (slotCreateNewSudoku()));
 
     connect(boardWidget, SIGNAL (cellClicked(int,int)), this, SLOT (slotReturnCellNumber(int,int)));
     connect(boardWidget, SIGNAL (cellChanged(int,int)), this, SLOT (slotCheckEnteredNumber(int,int)));

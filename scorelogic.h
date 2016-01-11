@@ -1,8 +1,6 @@
 #ifndef SCORELOGIC_H
 #define SCORELOGIC_H
 
-using namespace std;
-
 class ScoreLogic
 {
 public:

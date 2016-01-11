@@ -2,8 +2,8 @@
 #define BOARDWIDGET_H
 
 #include <QWidget>
+#include <QHBoxLayout>
 #include "boardlogic.h"
-#include "scorewidget.h"
 
 class QPushButton;
 class QTableWidget;
@@ -16,10 +16,10 @@ public:
 
 private:
     QPushButton *newSudokuButton;
-    QPushButton *one, *two, *three, *four, *five, *six, *seven, *eight, *nine;
     QTableWidget *boardWidget;
     BoardLogic *boardLogic;
-    ScoreWidget *scoreWidget;
+
+    QHBoxLayout *layout;
 
     void initSudoku();
     void displaySudoku();

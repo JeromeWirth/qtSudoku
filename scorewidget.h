@@ -3,19 +3,19 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QHBoxLayout>
 #include "scorelogic.h"
-#include "timerwidget.h"
 
 class ScoreWidget : public QWidget
 {
 public:
     explicit ScoreWidget(QWidget *parent = 0);
 
-private:
+private:    
     ScoreLogic *scoreLogic;
     QLabel *scoreLabel;
     QLabel *multiplierLabel;
-    TimerWidget *timerWidget;
+    QHBoxLayout *hLayout;
 
 signals:
 

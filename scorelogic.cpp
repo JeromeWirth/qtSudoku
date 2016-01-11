@@ -1,6 +1,8 @@
 #include "scorelogic.h"
 #include <iostream>
 
+using namespace std;
+
 ScoreLogic::ScoreLogic()
 {
     m_score = 0;

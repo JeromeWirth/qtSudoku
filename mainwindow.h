@@ -7,6 +7,10 @@
 #include <QMenuBar>
 #include <QGroupBox>
 
+#include "boardwidget.h"
+#include "timerwidget.h"
+#include "scorewidget.h"
+
 class MainWindow : public QDialog
 {
 public:
@@ -14,14 +18,20 @@ public:
 
 private:
     void createMenu();
-    void createHorizontalGroupBox();
+    void createScoreAndTimeBox();
+    void createControlGroupBox();
 
     QMenuBar *menuBar;
-    QGroupBox *horizontalGroupBox;
+    QGroupBox *scoreAndTimeBox;
+    QGroupBox *controlGroupBox;
     QPushButton *buttons[9];
 
     QMenu *fileMenu;
     QAction *exitAction;
+    QAction *newSudokuAction;
+    TimerWidget *timer;
+    ScoreWidget *score;
+    BoardWidget *board;
 
 signals:
 

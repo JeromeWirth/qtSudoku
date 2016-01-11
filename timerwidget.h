@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLabel>
+#include <QHBoxLayout>
 
 class TimerWidget : public QWidget
 {
@@ -15,6 +16,7 @@ private:
     QTimer *m_timer;
     QTime *m_timeValue;
     QLabel *m_display;
+    QHBoxLayout *hLayout;
 
 signals:
 
