@@ -10,14 +10,16 @@ SOURCES += \
     boardlogic.cpp \
     scorewidget.cpp \
     scorelogic.cpp \
-    timerwidget.cpp
+    timerwidget.cpp \
+    mainwindow.cpp
 
 HEADERS += \
     boardwidget.h \
     boardlogic.h \
     scorewidget.h \
     scorelogic.h \
-    timerwidget.h
+    timerwidget.h \
+    mainwindow.h
 
 CONFIG += c++11
 QMAKE_CXXFLAGS += -std=c++0x
