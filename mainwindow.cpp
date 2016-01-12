@@ -20,6 +20,8 @@ MainWindow::MainWindow()
 
     setLayout(mainLayout);
     setWindowTitle(tr("qtSudoku"));
+
+    connect(newSudokuAction, SIGNAL(triggered()), board, SLOT(slotCreateNewSudoku()));
 }
 
 void MainWindow::createMenu() {
@@ -53,7 +55,7 @@ void MainWindow::createControlGroupBox() {
     QHBoxLayout *layout = new QHBoxLayout;
 
     for (int i = 0; i < 9; ++i) {
-        buttons[i] = new QPushButton(tr(" %1").arg(i+1));
+        buttons[i] = new QPushButton(tr("%1").arg(i+1));
         layout->addWidget(buttons[i]);
     }
 
