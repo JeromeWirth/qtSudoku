@@ -4,10 +4,13 @@
 #include <QWidget>
 #include <QLabel>
 #include <QHBoxLayout>
+#include <QtDebug>
 #include "scorelogic.h"
 
 class ScoreWidget : public QWidget
 {
+    Q_OBJECT
+
 public:
     explicit ScoreWidget(QWidget *parent = 0);
 
@@ -20,6 +23,7 @@ private:
 signals:
 
 public slots:
+    void slotCorrectNumber();
 };
 
 #endif // SCOREWIDGET_H

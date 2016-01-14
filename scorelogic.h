@@ -9,6 +9,7 @@ public:
     int getScore();
     int getMultiplier();
     void decreaseMultiplier();
+    void setScore(int x);
 
 private:
     int m_score;

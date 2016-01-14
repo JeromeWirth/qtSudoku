@@ -22,3 +22,14 @@ ScoreWidget::ScoreWidget(QWidget *parent) : QWidget(parent)
     this->setLayout(hLayout);
 }
 
+void ScoreWidget::slotCorrectNumber() {
+    int points = scoreLogic->getScore() * scoreLogic->getMultiplier();
+
+    QString scoreString = "Score: " + QString::number(points);
+
+    qDebug() << "Adding Points = " << scoreLogic->getScore() << " x " << scoreLogic->getMultiplier() << " = " << points;
+
+    scoreLogic->setScore(points);
+    scoreLabel->setText(scoreString);
+}
+
