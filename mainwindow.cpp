@@ -4,6 +4,8 @@
 
 MainWindow::MainWindow()
 {
+    board = new BoardWidget();
+
     createMenu();
     createScoreAndTimeBox();
     createControlGroupBox();
@@ -13,15 +15,13 @@ MainWindow::MainWindow()
     mainLayout->setMenuBar(menuBar);
     mainLayout->addWidget(scoreAndTimeBox);
 
-    board = new BoardWidget();
-
     mainLayout->addWidget(board);
     mainLayout->addWidget(controlGroupBox);
 
+    connect(board, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
+
     setLayout(mainLayout);
     setWindowTitle(tr("qtSudoku"));
-
-    connect(newSudokuAction, SIGNAL(triggered()), board, SLOT(slotCreateNewSudoku()));
 }
 
 void MainWindow::createMenu() {
@@ -30,10 +30,11 @@ void MainWindow::createMenu() {
     fileMenu = new QMenu(tr("&File"), this);
 
     exitAction = fileMenu->addAction(tr("E&xit"));
-    newSudokuAction = fileMenu->addAction(tr("New Sudoku"));
+    newSudokuAction = fileMenu->addAction(tr("N&ew Sudoku"));
 
     menuBar->addMenu(fileMenu);
 
+    connect(newSudokuAction, SIGNAL(triggered()), board, SLOT(slotCreateNewSudoku()));
     connect(exitAction, SIGNAL(triggered()), this, SLOT(accept()));
 }
 
