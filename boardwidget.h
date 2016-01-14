@@ -25,6 +25,7 @@ private:
     void displaySudoku();
 
 signals:
+    void signalCorrectNumber();
 
 public slots:
     void slotCreateNewSudoku();

@@ -17,6 +17,7 @@ public:
     bool insertNumber(int row, int col, QString number);
     bool isNumberValid(int row, int col, int number);
     void printBoard();
+    void setNumber(int row, int col, int number);
     int getNumber(int row, int col);
     void generateEmptySudoku();
 

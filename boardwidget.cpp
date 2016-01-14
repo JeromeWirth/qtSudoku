@@ -8,7 +8,7 @@
 BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 {
     boardLogic = new BoardLogic();
-    boardWidget = new QTableWidget(9,9,this);
+    boardWidget = new QTableWidget(9,9);
     layout = new QHBoxLayout;
 
     boardWidget->verticalHeader()->setDefaultSectionSize(20);
@@ -83,6 +83,11 @@ void BoardWidget::slotReturnCellNumber(int row, int col) {
 void BoardWidget::slotCheckEnteredNumber(int row, int col) {
     // Store the entered Number in a QString
     QString qNumber = boardWidget->item(row, col)->text();
-    boardLogic->insertNumber(row, col, qNumber.toInt());
-    displaySudoku();
+
+    if (boardLogic->insertNumber(row, col, qNumber.toInt())) {
+        boardLogic->setNumber(row, col, qNumber.toInt());
+        displaySudoku();
+
+        emit signalCorrectNumber();
+    }
 }

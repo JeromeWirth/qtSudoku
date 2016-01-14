@@ -86,6 +86,10 @@ bool BoardLogic::checkBlock(int row, int col, int number) {
     return true;
 }
 
+void BoardLogic::setNumber(int row, int col, int number) {
+    m_board[col][row] = number;
+}
+
 void BoardLogic::printBoard() {
     cout << "  | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 |" << endl;
     for (int row = 0; row < 9; row++) {
