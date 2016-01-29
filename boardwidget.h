@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QHBoxLayout>
 #include "boardlogic.h"
+#include "sudokusolver.h"
 
 class QPushButton;
 class QTableWidget;
@@ -18,6 +19,7 @@ private:
     QPushButton *newSudokuButton;
     QTableWidget *boardWidget;
     BoardLogic *boardLogic;
+    SudokuSolver *solver;
 
     QHBoxLayout *layout;
 

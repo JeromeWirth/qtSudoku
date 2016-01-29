@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <random>
 
 using namespace std;
 
@@ -15,10 +16,16 @@ public:
     SudokuSolver();
     bool solveSudoku();
     void copyGrid(int grid[N][N]);
-    void printGrid();
+    void initPreSetSudoku();
+    void printGrid(int i);
+    int getNumber(int row, int col, bool solved);
+    void createUnsolvedBoard();
+    bool checkEnteredNumber(int row, int col, int num);
+    void setNumber(int row, int col);
 
 private:
-    int m_board[N][N];
+    int m_solvedBoard[N][N];
+    int m_unsolvedBoard[N][N];
 
     bool findUnassignedLocation(int &row, int &col);
     bool isSafe(int row, int col, int num);

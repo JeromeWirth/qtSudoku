@@ -8,6 +8,7 @@
 BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 {
     boardLogic = new BoardLogic();
+    solver = new SudokuSolver();
     boardWidget = new QTableWidget(9,9);
     layout = new QHBoxLayout;
 
@@ -46,7 +47,7 @@ void BoardWidget::displaySudoku() {
 
     for (int col = 0; col < 9; col++) {
         for (int row = 0; row < 9; row++) {
-            QString number = QString::number(boardLogic->getNumber(row, col));
+            QString number = QString::number(solver->getNumber(row, col, false));
             flags = boardWidget->item(row, col)->flags();
 
             if (number.toInt() != 0) {
@@ -67,14 +68,16 @@ void BoardWidget::displaySudoku() {
 }
 
 void BoardWidget::slotCreateNewSudoku() {
-    boardLogic->generateEmptySudoku();
-    boardLogic->generateSudoku();
-    displaySudoku();
+    solver->initPreSetSudoku();
+    if(solver->solveSudoku()) {
+        solver->createUnsolvedBoard();
+        displaySudoku();
+    }
 }
 
 void BoardWidget::slotReturnCellNumber(int row, int col) {
     cout << "--------------------------------" << endl;
-    boardLogic->getNumber(row, col);
+    solver->getNumber(row, col, false);
     QString number = boardWidget->item(row, col)->text();
     cout << "[BoardWidget] Row: " << row << " Col: " << col << " Number: " << number.toStdString() << endl;
     cout << "--------------------------------" << endl;
@@ -84,8 +87,8 @@ void BoardWidget::slotCheckEnteredNumber(int row, int col) {
     // Store the entered Number in a QString
     QString qNumber = boardWidget->item(row, col)->text();
 
-    if (boardLogic->insertNumber(row, col, qNumber.toInt())) {
-        boardLogic->setNumber(row, col, qNumber.toInt());
+    if (solver->checkEnteredNumber(row, col, qNumber.toInt())) {
+        solver->setNumber(row, col);
         displaySudoku();
 
         emit signalCorrectNumber();
