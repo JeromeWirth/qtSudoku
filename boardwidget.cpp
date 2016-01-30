@@ -1,9 +1,4 @@
 #include "boardwidget.h"
-#include <QTableWidget>
-#include <QHeaderView>
-#include <QPushButton>
-#include <QSignalBlocker>
-#include <iostream>
 
 BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 {
@@ -65,6 +60,20 @@ void BoardWidget::displaySudoku() {
             }
         }
     }
+
+    checkSolved();
+}
+
+bool BoardWidget::checkSolved() {
+    if (solver->countNumbers() == 81) {
+        cout << "Gratulatin Sudoku ist fertig !!!!!" << endl;
+
+        return true;
+    } else {
+        cout << "Nächster Zug!" << endl;
+
+        return false;
+    }
 }
 
 void BoardWidget::slotCreateNewSudoku() {
@@ -85,6 +94,8 @@ void BoardWidget::slotReturnCellNumber(int row, int col) {
 
 void BoardWidget::slotCheckEnteredNumber(int row, int col) {
     // Store the entered Number in a QString
+    const QSignalBlocker blocker(boardWidget);
+
     QString qNumber = boardWidget->item(row, col)->text();
 
     if (solver->checkEnteredNumber(row, col, qNumber.toInt())) {
@@ -92,5 +103,14 @@ void BoardWidget::slotCheckEnteredNumber(int row, int col) {
         displaySudoku();
 
         emit signalCorrectNumber();
+    } else {
+        boardWidget->item(row, col)->setBackground(Qt::red);
+        boardWidget->item(row, col)->setText(QString(""));
+        boardWidget->clearSelection();
+
+        cout << "FALSE NUMBER ENTERED!!!!!" << endl;
+
+        emit signalFalseNumber();
     }
+
 }

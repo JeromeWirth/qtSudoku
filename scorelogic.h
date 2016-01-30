@@ -1,6 +1,10 @@
 #ifndef SCORELOGIC_H
 #define SCORELOGIC_H
 
+#include <iostream>
+
+using namespace std;
+
 class ScoreLogic
 {
 public:

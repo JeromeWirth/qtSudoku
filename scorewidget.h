@@ -5,6 +5,8 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QtDebug>
+#include <QString>
+
 #include "scorelogic.h"
 
 class ScoreWidget : public QWidget
@@ -20,10 +22,13 @@ private:
     QLabel *multiplierLabel;
     QHBoxLayout *hLayout;
 
+    void updateScore();
+
 signals:
 
 public slots:
     void slotCorrectNumber();
+    void slotFalseNumber();
 };
 
 #endif // SCOREWIDGET_H

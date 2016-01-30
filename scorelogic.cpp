@@ -1,7 +1,4 @@
 #include "scorelogic.h"
-#include <iostream>
-
-using namespace std;
 
 ScoreLogic::ScoreLogic()
 {

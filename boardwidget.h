@@ -3,6 +3,13 @@
 
 #include <QWidget>
 #include <QHBoxLayout>
+#include <QTableWidget>
+#include <QHeaderView>
+#include <QPushButton>
+#include <QSignalBlocker>
+
+#include <iostream>
+
 #include "boardlogic.h"
 #include "sudokusolver.h"
 
@@ -25,14 +32,14 @@ private:
 
     void initSudoku();
     void displaySudoku();
+    bool checkSolved();
 
 signals:
     void signalCorrectNumber();
+    void signalFalseNumber();
 
 public slots:
     void slotCreateNewSudoku();
-
-private slots:
     void slotReturnCellNumber(int row, int col);
     void slotCheckEnteredNumber(int row, int col);
 };

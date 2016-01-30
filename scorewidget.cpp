@@ -1,6 +1,4 @@
 #include "scorewidget.h"
-#include <QLabel>
-#include <QString>
 
 ScoreWidget::ScoreWidget(QWidget *parent) : QWidget(parent)
 {
@@ -8,11 +6,7 @@ ScoreWidget::ScoreWidget(QWidget *parent) : QWidget(parent)
     scoreLabel = new QLabel();
     multiplierLabel = new QLabel();
 
-    QString scoreString = "Score: " + QString::number(scoreLogic->getScore());
-    QString multiplierString = "x" + QString::number(scoreLogic->getMultiplier());
-
-    scoreLabel->setText(scoreString);
-    multiplierLabel->setText(multiplierString);
+    updateScore();
 
     hLayout = new QHBoxLayout;
 
@@ -22,14 +16,30 @@ ScoreWidget::ScoreWidget(QWidget *parent) : QWidget(parent)
     this->setLayout(hLayout);
 }
 
+void ScoreWidget::updateScore() {
+    QString scoreString = "Score: " + QString::number(scoreLogic->getScore());
+    QString multiplierString = "x" + QString::number(scoreLogic->getMultiplier());
+
+    scoreLabel->setText(scoreString);
+    multiplierLabel->setText(multiplierString);
+}
+
 void ScoreWidget::slotCorrectNumber() {
     int points = scoreLogic->getScore() * scoreLogic->getMultiplier();
-
-    QString scoreString = "Score: " + QString::number(points);
 
     qDebug() << "Adding Points = " << scoreLogic->getScore() << " x " << scoreLogic->getMultiplier() << " = " << points;
 
     scoreLogic->setScore(points);
-    scoreLabel->setText(scoreString);
+
+    updateScore();
 }
 
+void ScoreWidget::slotFalseNumber() {
+    int points = scoreLogic->getScore() - 100;
+
+    qDebug() << "Substracting Points = " << scoreLogic->getScore() << " x " << scoreLogic->getMultiplier() << " = " << points;
+
+    scoreLogic->setScore(points);
+
+    updateScore();
+}
