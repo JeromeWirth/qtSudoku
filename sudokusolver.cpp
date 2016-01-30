@@ -143,13 +143,24 @@ void SudokuSolver::setNumber(int row, int col) {
 
 int SudokuSolver::getNumber(int row, int col, bool solved) {
     if (solved) {
-        cout << "getnumber TRUE -> " << m_solvedBoard[row][col] << endl;
         return m_solvedBoard[row][col];
     } else {
-        cout << "getnumber FALSE -> " << m_unsolvedBoard[row][col] << endl;
-
         return m_unsolvedBoard[row][col];
     }
+}
+
+int SudokuSolver::countNumbers() {
+    int count = 0;
+
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            if(m_unsolvedBoard[row][col] != 0) {
+                count++;
+            }
+        }
+    }
+
+    return count;
 }
 
 void SudokuSolver::printGrid(int i) {

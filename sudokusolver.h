@@ -22,6 +22,7 @@ public:
     void createUnsolvedBoard();
     bool checkEnteredNumber(int row, int col, int num);
     void setNumber(int row, int col);
+    int countNumbers();
 
 private:
     int m_solvedBoard[N][N];
