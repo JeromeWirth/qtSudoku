@@ -1,5 +1,3 @@
-#include <QtWidgets>
-
 #include "mainwindow.h"
 
 MainWindow::MainWindow()
@@ -19,6 +17,7 @@ MainWindow::MainWindow()
     mainLayout->addWidget(controlGroupBox);
 
     connect(board, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
+    connect(board, SIGNAL(signalFalseNumber()), score, SLOT(slotFalseNumber()));
 
     setLayout(mainLayout);
     setWindowTitle(tr("qtSudoku"));

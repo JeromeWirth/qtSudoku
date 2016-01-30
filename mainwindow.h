@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QtWidgets>
 #include <QObject>
 #include <QDialog>
 #include <QWidget>

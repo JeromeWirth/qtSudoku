@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QHBoxLayout>
+#include <QtWidgets>
 
 class TimerWidget : public QWidget
 {
