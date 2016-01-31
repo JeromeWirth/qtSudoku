@@ -18,12 +18,12 @@ private:
     QTime *m_timeValue;
     QLabel *m_display;
     QHBoxLayout *hLayout;
+    int m_seconds = 0;
 
 signals:
+    void signal5ScondsPass();
 
 public slots:
-
-private slots:
     void slotShowTimer();
     void slotResetTimer();
 };

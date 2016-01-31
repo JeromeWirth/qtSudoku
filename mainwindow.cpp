@@ -18,6 +18,9 @@ MainWindow::MainWindow()
 
     connect(board, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
     connect(board, SIGNAL(signalFalseNumber()), score, SLOT(slotFalseNumber()));
+    connect(timer, SIGNAL(signal5ScondsPass()), score, SLOT(slotDecreaseMultiplier()));
+    connect(board, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
+    connect(board, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));
 
     setLayout(mainLayout);
     setWindowTitle(tr("qtSudoku"));

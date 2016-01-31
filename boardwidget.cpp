@@ -2,7 +2,6 @@
 
 BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 {
-    boardLogic = new BoardLogic();
     solver = new SudokuSolver();
     boardWidget = new QTableWidget(9,9);
     layout = new QHBoxLayout;
@@ -82,6 +81,7 @@ void BoardWidget::slotCreateNewSudoku() {
         solver->createUnsolvedBoard();
         displaySudoku();
     }
+    emit signalNewSudoku();
 }
 
 void BoardWidget::slotReturnCellNumber(int row, int col) {

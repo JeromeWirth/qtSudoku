@@ -10,7 +10,6 @@
 
 #include <iostream>
 
-#include "boardlogic.h"
 #include "sudokusolver.h"
 
 class QPushButton;
@@ -25,7 +24,6 @@ public:
 private:
     QPushButton *newSudokuButton;
     QTableWidget *boardWidget;
-    BoardLogic *boardLogic;
     SudokuSolver *solver;
 
     QHBoxLayout *layout;
@@ -37,6 +35,7 @@ private:
 signals:
     void signalCorrectNumber();
     void signalFalseNumber();
+    void signalNewSudoku();
 
 public slots:
     void slotCreateNewSudoku();

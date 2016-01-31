@@ -22,6 +22,12 @@ void TimerWidget::slotShowTimer() {
     this->m_timeValue->setHMS(0, this->m_timeValue->addSecs(1).minute(),
             this->m_timeValue->addSecs(1).second());
     this->m_display->setText(m_timeValue->toString("mm:ss"));
+
+    m_seconds++;
+
+    if (m_seconds%5 == 0) {
+        emit signal5ScondsPass();
+    }
 }
 
 void TimerWidget::slotResetTimer() {
