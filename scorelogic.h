@@ -14,6 +14,9 @@ public:
     int getMultiplier();
     void decreaseMultiplier();
     void setScore(int x);
+    void decreaseScore(int x);
+    void increaseScore();
+    void resetScoreLogic();
 
 private:
     int m_score;
