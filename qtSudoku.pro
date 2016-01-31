@@ -7,22 +7,18 @@ QT += widgets
 SOURCES += \
     main.cpp \
     boardwidget.cpp \
-    boardlogic.cpp \
     scorewidget.cpp \
     scorelogic.cpp \
     timerwidget.cpp \
     mainwindow.cpp \
-    sudokucreator.cpp \
     sudokusolver.cpp
 
 HEADERS += \
     boardwidget.h \
-    boardlogic.h \
     scorewidget.h \
     scorelogic.h \
     timerwidget.h \
     mainwindow.h \
-    sudokucreator.h \
     sudokusolver.h
 
 CONFIG += c++11
