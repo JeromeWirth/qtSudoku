@@ -25,21 +25,25 @@ void ScoreWidget::updateScore() {
 }
 
 void ScoreWidget::slotCorrectNumber() {
-    int points = scoreLogic->getScore() * scoreLogic->getMultiplier();
-
-    qDebug() << "Adding Points = " << scoreLogic->getScore() << " x " << scoreLogic->getMultiplier() << " = " << points;
-
-    scoreLogic->setScore(points);
+    scoreLogic->increaseScore();
 
     updateScore();
 }
 
 void ScoreWidget::slotFalseNumber() {
-    int points = scoreLogic->getScore() - 100;
+    scoreLogic->decreaseScore(5);
 
-    qDebug() << "Substracting Points = " << scoreLogic->getScore() << " x " << scoreLogic->getMultiplier() << " = " << points;
+    updateScore();
+}
 
-    scoreLogic->setScore(points);
+void ScoreWidget::slotDecreaseMultiplier() {
+    scoreLogic->decreaseMultiplier();
+
+    updateScore();
+}
+
+void ScoreWidget::slotResetScore() {
+    scoreLogic->resetScoreLogic();
 
     updateScore();
 }

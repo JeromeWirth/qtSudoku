@@ -29,6 +29,8 @@ signals:
 public slots:
     void slotCorrectNumber();
     void slotFalseNumber();
+    void slotDecreaseMultiplier();
+    void slotResetScore();
 };
 
 #endif // SCOREWIDGET_H
