@@ -1,6 +1,5 @@
 #include <QtWidgets>
 
-#include "boardlogic.h"
 #include "boardwidget.h"
 #include "scorewidget.h"
 #include "timerwidget.h"
@@ -54,7 +53,7 @@ int main(int argc, char **argv) {
 
 
 //    SudokuSolver s;
-////    s.copyGrid(grid2);
+//    s.copyGrid(grid2);
 //    s.initPreSetSudoku();
 
 //    if (s.solveSudoku()) {
