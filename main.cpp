@@ -4,7 +4,6 @@
 #include "scorewidget.h"
 #include "timerwidget.h"
 #include "mainwindow.h"
-#include "sudokucreator.h"
 #include "sudokusolver.h"
 
 int main(int argc, char **argv) {
