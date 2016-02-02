@@ -116,6 +116,8 @@ bool SudokuSolver::usedInBox(int boxStartRow, int boxStartCol, int num) {
 void SudokuSolver::createUnsolvedBoard() {
     int count = 1;
 
+    emptyUnsolvedBoard();
+
     while(count!=30) {
         random_device rd;
         mt19937 rng(rd());
@@ -161,6 +163,14 @@ int SudokuSolver::countNumbers() {
     }
 
     return count;
+}
+
+void SudokuSolver::emptyUnsolvedBoard() {
+    for (int col = 0; col < 9; col++) {
+        for (int row = 0; row < 9; row++) {
+            m_unsolvedBoard[row][col] = 0;
+        }
+    }
 }
 
 void SudokuSolver::printGrid(int i) {

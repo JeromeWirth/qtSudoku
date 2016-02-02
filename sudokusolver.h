@@ -33,6 +33,7 @@ private:
     bool usedInRow(int row, int num);
     bool usedInCol(int col, int num);
     bool usedInBox(int boxStartRow, int boxStartCol, int num);
+    void emptyUnsolvedBoard();
 
 };
 
