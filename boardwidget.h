@@ -7,6 +7,9 @@
 #include <QHeaderView>
 #include <QPushButton>
 #include <QSignalBlocker>
+#include <QFont>
+#include <QSoundEffect>
+#include <QSound>
 
 #include <iostream>
 
@@ -25,6 +28,7 @@ private:
     QPushButton *newSudokuButton;
     QTableWidget *boardWidget;
     SudokuSolver *solver;
+    QSound *success;
 
     QHBoxLayout *layout;
 
@@ -41,6 +45,7 @@ public slots:
     void slotCreateNewSudoku();
     void slotReturnCellNumber(int row, int col);
     void slotCheckEnteredNumber(int row, int col);
+    void slotEnterNumber(int num);
 };
 
 #endif // BOARDWIDGET_H

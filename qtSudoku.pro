@@ -2,7 +2,7 @@ TEMPLATE = app
 TARGET = sudoku
 
 QT = core gui
-QT += widgets
+QT += widgets multimedia
 
 SOURCES += \
     main.cpp \
@@ -23,3 +23,6 @@ HEADERS += \
 
 CONFIG += c++11
 QMAKE_CXXFLAGS += -std=c++0x
+
+RESOURCES += \
+    files.qrc

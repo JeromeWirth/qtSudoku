@@ -5,17 +5,29 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
     solver = new SudokuSolver();
     boardWidget = new QTableWidget(9,9);
     layout = new QHBoxLayout;
+    success = new QSound(":/files/sounds/success.wav");
 
-    boardWidget->verticalHeader()->setDefaultSectionSize(20);
+    setMaximumSize(496, 496);
+
+    QFont font;
+    font.setPointSize(40);
+
+    boardWidget->setFont(font);
+
+    boardWidget->setShowGrid(true);
+
+    boardWidget->verticalHeader()->setDefaultSectionSize(52);
+    boardWidget->horizontalHeader()->setDefaultSectionSize(52);
+
+    boardWidget->verticalHeader()->hide();
+    boardWidget->horizontalHeader()->hide();
+
     boardWidget->verticalHeader()->sectionResizeMode(QHeaderView::Fixed);
-
-    boardWidget->horizontalHeader()->setDefaultSectionSize(20);
     boardWidget->horizontalHeader()->sectionResizeMode(QHeaderView::Fixed);
 
     layout->addWidget(boardWidget);
 
     this->setLayout(layout);
-    this->setMinimumHeight(230);
 
     initSudoku();
 
@@ -39,8 +51,8 @@ void BoardWidget::displaySudoku() {
 
     Qt::ItemFlags flags;
 
-    for (int col = 0; col < 9; col++) {
-        for (int row = 0; row < 9; row++) {
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
             QString number = QString::number(solver->getNumber(row, col, false));
             flags = boardWidget->item(row, col)->flags();
 
@@ -50,6 +62,7 @@ void BoardWidget::displaySudoku() {
                 boardWidget->item(row, col)->setText(number);
                 boardWidget->item(row, col)->setBackgroundColor(Qt::green);
                 boardWidget->item(row, col)->setFlags(flags);
+                boardWidget->item(row, col)->setTextAlignment(Qt::AlignCenter);
             } else {
                 flags |= Qt::ItemIsEditable;
 
@@ -102,6 +115,8 @@ void BoardWidget::slotCheckEnteredNumber(int row, int col) {
         solver->setNumber(row, col);
         displaySudoku();
 
+        success->play();
+
         emit signalCorrectNumber();
     } else {
         boardWidget->item(row, col)->setBackground(Qt::red);
@@ -113,4 +128,27 @@ void BoardWidget::slotCheckEnteredNumber(int row, int col) {
         emit signalFalseNumber();
     }
 
+}
+
+void BoardWidget::slotEnterNumber(int num) {
+    num = -1*(num+1);
+    int row = boardWidget->currentRow();
+    int col = boardWidget->currentColumn();
+
+    if(solver->checkEnteredNumber(row, col, num)) {
+        solver->setNumber(row, col);
+        displaySudoku();
+
+        success->play();
+
+        emit signalCorrectNumber();
+    } else {
+        boardWidget->item(row, col)->setBackground(Qt::red);
+        boardWidget->item(row, col)->setText(QString(""));
+        boardWidget->clearSelection();
+
+        cout << "FALSE NUMBER ENTERED!!!!!" << endl;
+
+        emit signalFalseNumber();
+    }
 }
