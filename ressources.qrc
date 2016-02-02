@@ -1,2 +1,18 @@
-<RCC/>
-
+<RCC>
+    <qresource prefix="/images">
+        <file>images/button-dark.png</file>
+        <file>images/button-light.png</file>
+        <file>images/sudokuboard.jpg</file>
+        <file>images/sudokuboard-small.jpg</file>
+        <file>images/sudokuboard-smaller.jpg</file>
+        <file>images/1button.png</file>
+        <file>images/2button.png</file>
+        <file>images/3button.png</file>
+        <file>images/4button.png</file>
+        <file>images/5button.png</file>
+        <file>images/6button.png</file>
+        <file>images/7button.png</file>
+        <file>images/8button.png</file>
+        <file>images/9button.png</file>
+    </qresource>
+</RCC>
