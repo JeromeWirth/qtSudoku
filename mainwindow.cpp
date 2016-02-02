@@ -21,8 +21,11 @@ MainWindow::MainWindow()
     connect(timer, SIGNAL(signal5ScondsPass()), score, SLOT(slotDecreaseMultiplier()));
     connect(board, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
     connect(board, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));
+    connect(buttonGroup, SIGNAL(buttonClicked(int)), board, SLOT(slotEnterNumber(int)));
 
     setLayout(mainLayout);
+    setMinimumHeight(750);
+    setMinimumWidth(600);
     setWindowTitle(tr("qtSudoku"));
 }
 
@@ -56,10 +59,17 @@ void MainWindow::createScoreAndTimeBox() {
 void MainWindow::createControlGroupBox() {
     controlGroupBox = new QGroupBox(tr("Controls"));
     QHBoxLayout *layout = new QHBoxLayout;
+    buttonGroup = new QButtonGroup;
+//    QPixmap bBackground(":/images/images/%1.png");
 
     for (int i = 0; i < 9; ++i) {
-        buttons[i] = new QPushButton(tr("%1").arg(i+1));
+//        buttons[i] = new QPushButton(tr("%1").);
+        buttons[i] = new QPushButton();
+        buttons[i]->setIcon(QIcon(QPixmap(tr(":/files/images/%1button.png").arg(i+1))));
+        buttons[i]->setIconSize(QSize(48, 48));
+        buttons[i]->setFixedSize(QSize(48, 48));
         layout->addWidget(buttons[i]);
+        buttonGroup->addButton(buttons[i]);
     }
 
     controlGroupBox->setLayout(layout);

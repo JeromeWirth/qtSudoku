@@ -25,6 +25,7 @@ private:
     QMenuBar *menuBar;
     QGroupBox *scoreAndTimeBox;
     QGroupBox *controlGroupBox;
+    QButtonGroup *buttonGroup;
     QPushButton *buttons[9];
 
     QMenu *fileMenu;
