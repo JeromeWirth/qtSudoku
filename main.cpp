@@ -119,10 +119,10 @@ int main(int argc, char **argv) {
     item3->setX(110);
 
     scene->addItem(item1);
-//    scene->addItem(item2);
-//    scene->addItem(item3);
+    scene->addItem(item2);
+    scene->addItem(item3);
 
-//    scene->addItem(sudoku);
+    scene->addItem(sudoku);
 
     view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);

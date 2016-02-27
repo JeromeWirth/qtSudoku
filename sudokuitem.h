@@ -2,8 +2,8 @@
 #define SUDOKUITEM_H
 
 #include <QPainter>
-#include <QGraphicsItem>
 #include <QGraphicsTextItem>
+#include <QGraphicsItem>
 #include <QDebug>
 
 class SudokuItem : public QGraphicsItem
