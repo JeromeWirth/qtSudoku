@@ -24,7 +24,7 @@ MainWindow::MainWindow()
     connect(buttonGroup, SIGNAL(buttonClicked(int)), board, SLOT(slotEnterNumber(int)));
 
     setLayout(mainLayout);
-    setMinimumHeight(750);
+    setMinimumHeight(600);
     setMinimumWidth(600);
     setWindowTitle(tr("qtSudoku"));
 }

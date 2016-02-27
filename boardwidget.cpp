@@ -16,8 +16,8 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
 
     boardWidget->setShowGrid(true);
 
-    boardWidget->verticalHeader()->setDefaultSectionSize(52);
-    boardWidget->horizontalHeader()->setDefaultSectionSize(52);
+    boardWidget->verticalHeader()->setDefaultSectionSize(40);
+    boardWidget->horizontalHeader()->setDefaultSectionSize(40);
 
     boardWidget->verticalHeader()->hide();
     boardWidget->horizontalHeader()->hide();

@@ -83,7 +83,6 @@ bool SudokuSolver::isSafe(int row, int col, int num) {
     return !usedInRow(row, num) &&
            !usedInCol(col, num) &&
            !usedInBox(row - row%3, col - col%3, num);
-
 }
 
 bool SudokuSolver::usedInRow(int row, int num) {

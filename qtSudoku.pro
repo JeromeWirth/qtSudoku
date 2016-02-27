@@ -11,7 +11,9 @@ SOURCES += \
     scorelogic.cpp \
     timerwidget.cpp \
     mainwindow.cpp \
-    sudokusolver.cpp
+    sudokusolver.cpp \
+    sudokuitem.cpp \
+    sudokuwidget.cpp
 
 HEADERS += \
     boardwidget.h \
@@ -19,7 +21,9 @@ HEADERS += \
     scorelogic.h \
     timerwidget.h \
     mainwindow.h \
-    sudokusolver.h
+    sudokusolver.h \
+    sudokuitem.h \
+    sudokuwidget.h
 
 CONFIG += c++11
 QMAKE_CXXFLAGS += -std=c++0x
