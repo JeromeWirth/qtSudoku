@@ -13,6 +13,7 @@ SOURCES += \
     mainwindow.cpp \
     sudokusolver.cpp \
     sudokuitem.cpp \
+    sudokuboard.cpp \
     sudokuwidget.cpp
 
 HEADERS += \
@@ -23,6 +24,7 @@ HEADERS += \
     mainwindow.h \
     sudokusolver.h \
     sudokuitem.h \
+    sudokuboard.h \
     sudokuwidget.h
 
 CONFIG += c++11
