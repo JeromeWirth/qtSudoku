@@ -50,8 +50,7 @@ void SudokuWidget::displayItems()
             if (col % 3 == 0 && col != 0) {
                 xoffset++;
             }
-            int temp_num = loader->getNumber(row, col);
-            qDebug() << "Row: " << row << "Col: " << col << "Num: " << temp_num;
+            int temp_num = loader->getNumber(row, col, false);
 
             if (temp_num == 0) {
                 items[row][col]->setStatus(false);
@@ -85,9 +84,6 @@ void SudokuWidget::slotInputNumber(int row, int col)
 
         input->setGeometry(x, y, 50, 50);
 
-        qDebug() << "INPUT: " << input->rect();
-        qDebug() << "Row: " << row << "Col: " << col;
-
         tempRow = row-1;
         tempCol = col-1;
 
@@ -105,7 +101,7 @@ void SudokuWidget::slotCheckInput()
 
     int num = input->text().toInt();
 
-    if (items[tempRow][tempCol]->getNumber() == 0) {
+    if (num == loader->getNumber(tempRow, tempCol, true)) {
         items[tempRow][tempCol]->setNumber(num);
         items[tempRow][tempCol]->setStatus(true);
     }

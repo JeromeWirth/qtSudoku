@@ -14,23 +14,40 @@ SudokuLoader::SudokuLoader(QString fileName)
 
 
         for (int col = 0; col < 9; col++) {
-            m_board[row][col] = line.at(col).digitValue();
+            m_unsolvedBoard[row][col] = line.at(col).digitValue();
         }
 
         row++;
     }
+
+    solveSudoku();
 }
 
 void SudokuLoader::printLevel()
 {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
-            qDebug() << "Row: " << row << ", Col: " << col << " Num: " << m_board[row][col];
+            qDebug() << "Row: " << row << ", Col: " << col << " Num: " << m_unsolvedBoard[row][col];
         }
     }
 }
 
-int SudokuLoader::getNumber(int row, int col)
+int SudokuLoader::getNumber(int row, int col, bool solved)
 {
-    return m_board[row][col];
+    if (solved) {
+        return m_solvedBoard[row][col];
+    } else {
+        return m_unsolvedBoard[row][col];
+    }
+}
+
+void SudokuLoader::solveSudoku()
+{
+    SudokuSolver solver(m_unsolvedBoard);
+
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            m_solvedBoard[row][col] = solver.getNumber(row, col);
+        }
+    }
 }

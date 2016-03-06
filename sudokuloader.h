@@ -6,15 +6,21 @@
 #include <QDebug>
 #include <QTextStream>
 
+#include "sudokusolver.h"
+
 class SudokuLoader
 {
 public:
     SudokuLoader(QString fileName);
     void printLevel();
-    int getNumber(int row, int col);
+    int getNumber(int row, int col, bool solved);
+    int getSudoku();
 
 private:
-    int m_board[9][9];
+    int m_unsolvedBoard[9][9];
+    int m_solvedBoard[9][9];
+
+    void solveSudoku();
 };
 
 #endif // SUDOKULOADER_H

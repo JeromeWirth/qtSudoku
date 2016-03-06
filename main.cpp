@@ -1,6 +1,5 @@
 #include <QtWidgets>
 
-#include "boardwidget.h"
 #include "scorewidget.h"
 #include "timerwidget.h"
 #include "mainwindow.h"
@@ -108,7 +107,6 @@ int main(int argc, char **argv) {
 //            qDebug() << "Row: " << row << ", Col: " << col << " Num: " << board[row][col];
 //        }
 //    }
-
 
     return app.exec();
 }

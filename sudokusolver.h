@@ -12,13 +12,11 @@ class SudokuSolver
 public:
     SudokuSolver(int grid[9][9]);
     bool solveSudoku(int grid[9][9]);
-    void printGrid(int i);
-    bool checkEnteredNumber(int row, int col, int num);
-    void setNumber(int row, int col);
-    int countNumbers();
+    void printGrid();
+    int getNumber(int row, int col);
 
 private:
-    int m_solvedBoard[9][9];
+    int m_board[9][9];
 
     bool findUnassignedLocation(int &row, int &col);
     bool isSafe(int row, int col, int num);
