@@ -6,7 +6,6 @@ QT += widgets multimedia
 
 SOURCES += \
     main.cpp \
-    boardwidget.cpp \
     scorewidget.cpp \
     scorelogic.cpp \
     timerwidget.cpp \
@@ -14,10 +13,10 @@ SOURCES += \
     sudokusolver.cpp \
     sudokuitem.cpp \
     sudokuboard.cpp \
-    sudokuwidget.cpp
+    sudokuwidget.cpp \
+    sudokuloader.cpp
 
 HEADERS += \
-    boardwidget.h \
     scorewidget.h \
     scorelogic.h \
     timerwidget.h \
@@ -25,7 +24,8 @@ HEADERS += \
     sudokusolver.h \
     sudokuitem.h \
     sudokuboard.h \
-    sudokuwidget.h
+    sudokuwidget.h \
+    sudokuloader.h
 
 CONFIG += c++11
 QMAKE_CXXFLAGS += -std=c++0x

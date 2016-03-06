@@ -2,30 +2,31 @@
 
 MainWindow::MainWindow()
 {
-    board = new BoardWidget();
+//    board = new BoardWidget();
+    sudoku = new SudokuWidget();
 
     createMenu();
     createScoreAndTimeBox();
-    createControlGroupBox();
+    // createControlGroupBox();
 
     QVBoxLayout *mainLayout = new QVBoxLayout;
 
     mainLayout->setMenuBar(menuBar);
     mainLayout->addWidget(scoreAndTimeBox);
 
-    mainLayout->addWidget(board);
-    mainLayout->addWidget(controlGroupBox);
+    mainLayout->addWidget(sudoku);
+    // mainLayout->addWidget(controlGroupBox);
 
-    connect(board, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
-    connect(board, SIGNAL(signalFalseNumber()), score, SLOT(slotFalseNumber()));
+//    connect(board, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
+//    connect(board, SIGNAL(signalFalseNumber()), score, SLOT(slotFalseNumber()));
     connect(timer, SIGNAL(signal5ScondsPass()), score, SLOT(slotDecreaseMultiplier()));
-    connect(board, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
-    connect(board, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));
-    connect(buttonGroup, SIGNAL(buttonClicked(int)), board, SLOT(slotEnterNumber(int)));
+//    connect(board, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
+//    connect(board, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));
+//    connect(buttonGroup, SIGNAL(buttonClicked(int)), board, SLOT(slotEnterNumber(int)));
 
     setLayout(mainLayout);
-    setMinimumHeight(600);
-    setMinimumWidth(600);
+    setMinimumSize(550, 650);
+    setMaximumSize(550, 650);
     setWindowTitle(tr("qtSudoku"));
 }
 
@@ -34,12 +35,12 @@ void MainWindow::createMenu() {
 
     fileMenu = new QMenu(tr("&File"), this);
 
-    exitAction = fileMenu->addAction(tr("E&xit"));
     newSudokuAction = fileMenu->addAction(tr("N&ew Sudoku"));
+    exitAction = fileMenu->addAction(tr("E&xit"));
 
     menuBar->addMenu(fileMenu);
 
-    connect(newSudokuAction, SIGNAL(triggered()), board, SLOT(slotCreateNewSudoku()));
+//    connect(newSudokuAction, SIGNAL(triggered()), board, SLOT(slotCreateNewSudoku()));
     connect(exitAction, SIGNAL(triggered()), this, SLOT(accept()));
 }
 

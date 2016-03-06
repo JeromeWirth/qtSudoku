@@ -8,7 +8,7 @@
 #include <QMenuBar>
 #include <QGroupBox>
 
-#include "boardwidget.h"
+#include "sudokuwidget.h"
 #include "timerwidget.h"
 #include "scorewidget.h"
 
@@ -33,7 +33,8 @@ private:
     QAction *newSudokuAction;
     TimerWidget *timer;
     ScoreWidget *score;
-    BoardWidget *board;
+    SudokuWidget *sudoku;
+
 
 signals:
 

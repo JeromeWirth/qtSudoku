@@ -35,6 +35,5 @@ void SudokuBoard::paint(QPainter *painter, const QStyleOptionGraphicsItem *optio
     painter->drawLine(0, 283, 510, 283);
     painter->drawLine(0, 399, 510, 399);
     painter->drawLine(0, 455, 510, 455);
-
 }
 

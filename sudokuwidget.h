@@ -4,9 +4,11 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include <QGraphicsView>
+#include <QLineEdit>
 
 #include "sudokuboard.h"
 #include "sudokuitem.h"
+#include "sudokuloader.h"
 
 class SudokuWidget : public QWidget
 {
@@ -20,12 +22,20 @@ private:
     QGraphicsScene  *scene;
     SudokuItem      *items[9][9];
     SudokuBoard     *board;
+    SudokuLoader    *loader;
+    QLineEdit       *input;
+
+    int tempRow;
+    int tempCol;
 
     void displayItems();
+    void loadSudoku();
 
 signals:
 
 public slots:
+    void slotInputNumber(int row, int col);
+    void slotCheckInput();
 };
 
 #endif // SUDOKUWIDGET_H

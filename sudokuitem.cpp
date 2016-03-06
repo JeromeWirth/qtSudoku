@@ -6,6 +6,7 @@ SudokuItem::SudokuItem()
     m_col = 0;
     m_number = 0;
     pressed = false;
+    m_status = false;
 
     number = new QGraphicsTextItem(this);
     setNumber(m_number);
@@ -19,13 +20,22 @@ QRectF SudokuItem::boundingRect() const
 void SudokuItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     QRectF rect = boundingRect();
-    QBrush brush(Qt::gray);
-    QPen pen(Qt::black);
-    pen.setWidth(3);
+    QBrush brushCorrect(Qt::gray);
+    QBrush brushIncorrect(Qt::white);
+    QPen penCorrect(Qt::black);
+    QPen penIncorrect(Qt::white);
 
-    painter->fillRect(rect, brush);
-    painter->setPen(pen);
-    painter->drawRect(rect);
+    if(m_status) {
+        penCorrect.setWidth(3);
+        painter->fillRect(rect, brushCorrect);
+        painter->setPen(penCorrect);
+        painter->drawRect(rect);
+    } else {
+        penIncorrect.setWidth(3);
+        painter->fillRect(rect, brushIncorrect);
+        painter->setPen(penIncorrect);
+        painter->drawRect(rect);
+    }
 }
 
 void SudokuItem::setRow(int row)
@@ -44,7 +54,12 @@ void SudokuItem::setNumber(int num)
     QFont font;
     font.setPointSize(40);
 
-    number->setPlainText(QString::number(m_number));
+    if (m_number == 0) {
+        number->setPlainText("");
+    } else {
+        number->setPlainText(QString::number(m_number));
+    }
+
     number->setDefaultTextColor(Qt::black);
     number->setFont(font);
     number->setX(this->boundingRect().center().x() - number->boundingRect().center().x());
@@ -60,8 +75,22 @@ int SudokuItem::getCol() {
     return m_col;
 }
 
+int SudokuItem::getNumber()
+{
+    return m_number;
+}
+
+void SudokuItem::setStatus(bool status)
+{
+    m_status = status;
+}
+
+bool SudokuItem::getStatus()
+{
+    return m_status;
+}
+
 void SudokuItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    pressed = true;
-    qDebug() << "Row: " << m_row << ", Col: " << m_col << endl;
+    emit signalOnClick(m_row, m_col);
 }
