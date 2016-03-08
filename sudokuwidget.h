@@ -30,8 +30,12 @@ private:
 
     void displayItems();
     void loadSudoku();
+    int countCorrectNumbers();
 
 signals:
+    void signalCorrectNumber();
+    void signalFalseNumber();
+    void signalFinishedGame();
 
 public slots:
     void slotInputNumber(int row, int col);

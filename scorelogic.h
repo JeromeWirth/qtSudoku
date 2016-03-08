@@ -12,10 +12,10 @@ public:
 
     int getScore();
     int getMultiplier();
-    void decreaseMultiplier();
+    void decreaseMultiplier(int x);
     void setScore(int x);
     void decreaseScore(int x);
-    void increaseScore();
+    void increaseScore(int x);
     void resetScoreLogic();
 
 private:

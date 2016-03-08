@@ -25,25 +25,27 @@ void ScoreWidget::updateScore() {
 }
 
 void ScoreWidget::slotCorrectNumber() {
-    scoreLogic->increaseScore();
+    scoreLogic->increaseScore(1);
 
     updateScore();
 }
 
 void ScoreWidget::slotFalseNumber() {
-    scoreLogic->decreaseScore(5);
-
-    updateScore();
-}
-
-void ScoreWidget::slotDecreaseMultiplier() {
-    scoreLogic->decreaseMultiplier();
+    scoreLogic->decreaseScore(3);
+    scoreLogic->decreaseMultiplier(3);
 
     updateScore();
 }
 
 void ScoreWidget::slotResetScore() {
     scoreLogic->resetScoreLogic();
+
+    updateScore();
+}
+
+void ScoreWidget::slotDecreaseMultiplier()
+{
+    scoreLogic->decreaseMultiplier(1);
 
     updateScore();
 }

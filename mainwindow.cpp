@@ -2,7 +2,6 @@
 
 MainWindow::MainWindow()
 {
-//    board = new BoardWidget();
     sudoku = new SudokuWidget();
 
     createMenu();
@@ -17,8 +16,8 @@ MainWindow::MainWindow()
     mainLayout->addWidget(sudoku);
     // mainLayout->addWidget(controlGroupBox);
 
-//    connect(board, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
-//    connect(board, SIGNAL(signalFalseNumber()), score, SLOT(slotFalseNumber()));
+    connect(sudoku, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
+    connect(sudoku, SIGNAL(signalFalseNumber()), score, SLOT(slotFalseNumber()));
     connect(timer, SIGNAL(signal5ScondsPass()), score, SLOT(slotDecreaseMultiplier()));
 //    connect(board, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
 //    connect(board, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));

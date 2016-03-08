@@ -74,6 +74,21 @@ void SudokuWidget::loadSudoku()
 
 }
 
+int SudokuWidget::countCorrectNumbers()
+{
+    int correct = 0;
+
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            if(items[row][col]->getStatus()) {
+                correct++;
+            }
+        }
+    }
+
+    return correct;
+}
+
 void SudokuWidget::slotInputNumber(int row, int col)
 {
     input->clear();
@@ -104,6 +119,17 @@ void SudokuWidget::slotCheckInput()
     if (num == loader->getNumber(tempRow, tempCol, true)) {
         items[tempRow][tempCol]->setNumber(num);
         items[tempRow][tempCol]->setStatus(true);
+
+        emit signalCorrectNumber();
+    } else {
+        emit signalFalseNumber();
+    }
+
+    if(countCorrectNumbers() == 81) {
+        qDebug() << "Spiel beendet!";
+        emit signalFinishedGame();
+    } else {
+        qDebug() << "Noch weite Züge möglich: " << countCorrectNumbers();
     }
 
     input->clear();

@@ -16,8 +16,8 @@ int ScoreLogic::getMultiplier() {
     return m_multiplier;
 }
 
-void ScoreLogic::increaseScore() {
-    m_score = (1 * (m_multiplier/10)) + m_score;
+void ScoreLogic::increaseScore(int x) {
+    m_score = (x * (m_multiplier/10)) + m_score;
 }
 
 void ScoreLogic::decreaseScore(int x) {
@@ -28,8 +28,8 @@ void ScoreLogic::decreaseScore(int x) {
     }
 }
 
-void ScoreLogic::decreaseMultiplier() {
-    m_multiplier -= 1;
+void ScoreLogic::decreaseMultiplier(int x) {
+    m_multiplier -= x;
 }
 
 void ScoreLogic::setScore(int x) {
