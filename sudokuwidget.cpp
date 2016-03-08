@@ -22,7 +22,7 @@ SudokuWidget::SudokuWidget(QWidget *parent)
     setMinimumWidth(512);
     setMaximumWidth(512);
 
-    displayItems();
+    slotLoadSudoku();
 
     scene->addItem(board);
 
@@ -33,8 +33,10 @@ SudokuWidget::SudokuWidget(QWidget *parent)
     connect(input, SIGNAL(returnPressed()), this, SLOT(slotCheckInput()));
 }
 
-void SudokuWidget::displayItems()
+void SudokuWidget::slotLoadSudoku()
 {
+    emit signalNewSudoku();
+
     int offset = 4;
     int xoffset = 0;
     int yoffset = 0;
@@ -67,11 +69,6 @@ void SudokuWidget::displayItems()
         }
         xoffset = 0;
     }
-}
-
-void SudokuWidget::loadSudoku()
-{
-
 }
 
 int SudokuWidget::countCorrectNumbers()

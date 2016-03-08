@@ -28,18 +28,18 @@ private:
     int tempRow;
     int tempCol;
 
-    void displayItems();
-    void loadSudoku();
     int countCorrectNumbers();
 
 signals:
     void signalCorrectNumber();
     void signalFalseNumber();
     void signalFinishedGame();
+    void signalNewSudoku();
 
 public slots:
     void slotInputNumber(int row, int col);
     void slotCheckInput();
+    void slotLoadSudoku();
 };
 
 #endif // SUDOKUWIDGET_H

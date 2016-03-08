@@ -19,8 +19,8 @@ MainWindow::MainWindow()
     connect(sudoku, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
     connect(sudoku, SIGNAL(signalFalseNumber()), score, SLOT(slotFalseNumber()));
     connect(timer, SIGNAL(signal5ScondsPass()), score, SLOT(slotDecreaseMultiplier()));
-//    connect(board, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
-//    connect(board, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));
+    connect(sudoku, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
+    connect(sudoku, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));
 //    connect(buttonGroup, SIGNAL(buttonClicked(int)), board, SLOT(slotEnterNumber(int)));
 
     setLayout(mainLayout);
@@ -39,7 +39,7 @@ void MainWindow::createMenu() {
 
     menuBar->addMenu(fileMenu);
 
-//    connect(newSudokuAction, SIGNAL(triggered()), board, SLOT(slotCreateNewSudoku()));
+    connect(newSudokuAction, SIGNAL(triggered()), sudoku, SLOT(slotLoadSudoku()));
     connect(exitAction, SIGNAL(triggered()), this, SLOT(accept()));
 }
 
