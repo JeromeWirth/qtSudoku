@@ -13,6 +13,7 @@ class SudokuLoader
 public:
     SudokuLoader(QString fileName);
     void printLevel();
+    void loadLevel(QString fileName);
     int getNumber(int row, int col, bool solved);
     int getSudoku();
 

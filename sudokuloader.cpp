@@ -32,6 +32,29 @@ void SudokuLoader::printLevel()
     }
 }
 
+void SudokuLoader::loadLevel(QString fileName)
+{
+    int row = 0;
+
+    QFile file(fileName);
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        qDebug() << "Could not read file" << endl;
+
+    QTextStream in(&file);
+    while (!in.atEnd()) {
+        QString line = in.readLine();
+
+
+        for (int col = 0; col < 9; col++) {
+            m_unsolvedBoard[row][col] = line.at(col).digitValue();
+        }
+
+        row++;
+    }
+
+    solveSudoku();
+}
+
 int SudokuLoader::getNumber(int row, int col, bool solved)
 {
     if (solved) {

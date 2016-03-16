@@ -2,7 +2,7 @@ TEMPLATE = app
 TARGET = sudoku
 
 QT = core gui
-QT += widgets multimedia
+QT += widgets multimedia sql
 
 SOURCES += \
     main.cpp \
@@ -14,7 +14,9 @@ SOURCES += \
     sudokuitem.cpp \
     sudokuboard.cpp \
     sudokuwidget.cpp \
-    sudokuloader.cpp
+    sudokuloader.cpp \
+    leaderboardlogic.cpp \
+    gameoverwindow.cpp
 
 HEADERS += \
     scorewidget.h \
@@ -25,7 +27,9 @@ HEADERS += \
     sudokuitem.h \
     sudokuboard.h \
     sudokuwidget.h \
-    sudokuloader.h
+    sudokuloader.h \
+    leaderboardlogic.h \
+    gameoverwindow.h
 
 CONFIG += c++11
 QMAKE_CXXFLAGS += -std=c++0x
