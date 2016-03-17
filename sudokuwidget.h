@@ -6,6 +6,7 @@
 #include <QGraphicsView>
 #include <QLineEdit>
 #include <QMessageBox>
+#include <QPushButton>
 
 #include "sudokuboard.h"
 #include "sudokuitem.h"
@@ -25,7 +26,6 @@ private:
     SudokuBoard     *board;
     SudokuLoader    *loader;
     QLineEdit       *input;
-    QMessageBox     *finishGame;
 
     int tempRow;
     int tempCol;
@@ -42,7 +42,6 @@ public slots:
     void slotInputNumber(int row, int col);
     void slotCheckInput();
     void slotLoadSudoku();
-    void slotFinishGame();
     void loadSudoku();
 
 };

@@ -3,6 +3,7 @@
 MainWindow::MainWindow()
 {
     sudoku = new SudokuWidget();
+    gameOver = new GameOverWindow();
 
     createMenu();
     createScoreAndTimeBox();
@@ -22,6 +23,9 @@ MainWindow::MainWindow()
     connect(sudoku, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
     connect(sudoku, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));
 //    connect(buttonGroup, SIGNAL(buttonClicked(int)), board, SLOT(slotEnterNumber(int)));
+    connect(sudoku, SIGNAL(signalFinishedGame()), this, SLOT(slotFinishGame()));
+    connect(gameOver, SIGNAL(signalEndGame()), qApp, SLOT(quit()));
+    connect(gameOver, SIGNAL(signalNewGame()), sudoku, SLOT(loadSudoku()));
 
     setLayout(mainLayout);
     setMinimumSize(550, 650);
@@ -73,5 +77,9 @@ void MainWindow::createControlGroupBox() {
     }
 
     controlGroupBox->setLayout(layout);
+}
+
+void MainWindow::slotFinishGame() {
+    gameOver->exec();
 }
 

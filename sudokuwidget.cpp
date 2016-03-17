@@ -7,8 +7,6 @@ SudokuWidget::SudokuWidget(QWidget *parent)
     view = new QGraphicsView(this);
     loader = new SudokuLoader("level/003.txt");
     input = new QLineEdit(this);
-    finishGame = new QMessageBox();
-
 
     QFont font;
     font.setPointSize(40);
@@ -33,8 +31,6 @@ SudokuWidget::SudokuWidget(QWidget *parent)
     view->setScene(scene);
 
     connect(input, SIGNAL(returnPressed()), this, SLOT(slotCheckInput()));
-    connect(this, SIGNAL(signalFinishedGame()), this, SLOT(slotFinishGame()));
-    connect(finishGame, SIGNAL(buttonClicked(QAbstractButton*)), this, SLOT(loadSudoku()));
 }
 
 void SudokuWidget::slotLoadSudoku()
@@ -136,14 +132,8 @@ void SudokuWidget::slotCheckInput()
     input->clear();
 }
 
-void SudokuWidget::slotFinishGame() {
-    finishGame->setWindowTitle("Glückwunsch!");
-    finishGame->setText("DU hast gewonnen!");
-    finishGame->show();
-}
-
 void SudokuWidget::loadSudoku() {
-    loader->loadLevel("level/001.txt");
+    loader->loadLevel("level/003.txt");
 
     slotLoadSudoku();
 }

@@ -11,9 +11,13 @@
 #include "sudokuwidget.h"
 #include "timerwidget.h"
 #include "scorewidget.h"
+#include "gameoverwindow.h"
+
 
 class MainWindow : public QDialog
 {
+    Q_OBJECT
+
 public:
     MainWindow();
 
@@ -34,11 +38,13 @@ private:
     TimerWidget *timer;
     ScoreWidget *score;
     SudokuWidget *sudoku;
+    GameOverWindow *gameOver;
 
 
 signals:
 
 public slots:
+    void slotFinishGame();
 };
 
 #endif // MAINWINDOW_H
