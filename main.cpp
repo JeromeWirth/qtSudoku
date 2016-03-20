@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+#include <QString>
 
 #include "scorewidget.h"
 #include "timerwidget.h"
@@ -16,6 +17,8 @@
 #include "sudokuwidget.h"
 #include "sudokuloader.h"
 #include "gameoverwindow.h"
+#include "randompathgenerator.h"
+#include "leaderboard.h"
 
 int main(int argc, char **argv) {
     QApplication app (argc, argv);
@@ -26,27 +29,10 @@ int main(int argc, char **argv) {
 //    GameOverWindow text;
 //    text.show();
 
-//    QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
-//    db.setHostName("db.f4.htw-berlin.de");
-//    db.setDatabaseName("_s0532939__qtsudokuleaderboard");
-//    db.setUserName("s0532939");
-//    db.setPassword("sn#582jW");
 
-//    bool ok = db.open();
-
-
-//    if (ok) {
-//        QSqlQuery query(db);
-//        query.exec("SELECT * FROM Scores");
-
-//        while (query.next()) {
-//            QString name = query.value(0).toString();
-//            int score = query.value(1).toInt();
-//            qDebug() << "Name: " << name << ", Punkte: " << score;
-//        }
-//    } else {
-//        qDebug() << "ERROR DB";
-//    }
+//    LeaderBoard board;
+//    board.insertRaninking("jak", 40);
+//    board.printRankings();
 
     return app.exec();
 }
