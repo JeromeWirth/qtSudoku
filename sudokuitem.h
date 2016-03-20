@@ -8,7 +8,8 @@
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
 
-class SudokuItem : public QObject, public QGraphicsItem
+//class SudokuItem : public QObject, public QGraphicsItem
+class SudokuItem : public QGraphicsObject
 {
     Q_OBJECT
 
