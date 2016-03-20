@@ -11,6 +11,7 @@
 #include "sudokuboard.h"
 #include "sudokuitem.h"
 #include "sudokuloader.h"
+#include "randompathgenerator.h"
 
 class SudokuWidget : public QWidget
 {
@@ -31,6 +32,7 @@ private:
     int tempCol;
 
     int countCorrectNumbers();
+    void displaySudoku();
 
 signals:
     void signalCorrectNumber();
@@ -41,8 +43,8 @@ signals:
 public slots:
     void slotInputNumber(int row, int col);
     void slotCheckInput();
-    void slotLoadSudoku();
     void loadSudoku();
+    void slotLoadSudoku(int difficult);
 
 };
 

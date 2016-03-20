@@ -22,7 +22,7 @@ SudokuWidget::SudokuWidget(QWidget *parent)
     setMinimumWidth(512);
     setMaximumWidth(512);
 
-    slotLoadSudoku();
+    displaySudoku();
 
     scene->addItem(board);
 
@@ -33,7 +33,7 @@ SudokuWidget::SudokuWidget(QWidget *parent)
     connect(input, SIGNAL(returnPressed()), this, SLOT(slotCheckInput()));
 }
 
-void SudokuWidget::slotLoadSudoku()
+void SudokuWidget::displaySudoku()
 {
     emit signalNewSudoku();
 
@@ -135,5 +135,13 @@ void SudokuWidget::slotCheckInput()
 void SudokuWidget::loadSudoku() {
     loader->loadLevel("level/003.txt");
 
-    slotLoadSudoku();
+    displaySudoku();
+}
+
+void SudokuWidget::slotLoadSudoku(int difficult) {
+    RandomPathGenerator path(difficult);
+    qDebug() << path.getFilePath();
+
+    loader->loadLevel(path.getFilePath());
+    displaySudoku();
 }
