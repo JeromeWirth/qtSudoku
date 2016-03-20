@@ -12,6 +12,7 @@
 #include "timerwidget.h"
 #include "scorewidget.h"
 #include "gameoverwindow.h"
+#include "newgamewindow.h"
 
 
 class MainWindow : public QDialog
@@ -25,6 +26,7 @@ private:
     void createMenu();
     void createScoreAndTimeBox();
     void createControlGroupBox();
+    void createNewGamePopup();
 
     QMenuBar *menuBar;
     QGroupBox *scoreAndTimeBox;
@@ -35,6 +37,8 @@ private:
     QMenu *fileMenu;
     QAction *exitAction;
     QAction *newSudokuAction;
+    NewGameWindow *newGame;
+
     TimerWidget *timer;
     ScoreWidget *score;
     SudokuWidget *sudoku;
@@ -42,9 +46,11 @@ private:
 
 
 signals:
+    void signalNewGame(QString difficult);
 
 public slots:
     void slotFinishGame();
+    void slotNewGame();
 };
 
 #endif // MAINWINDOW_H

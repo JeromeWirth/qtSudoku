@@ -4,6 +4,7 @@ MainWindow::MainWindow()
 {
     sudoku = new SudokuWidget();
     gameOver = new GameOverWindow();
+    newGame = new NewGameWindow();
 
     createMenu();
     createScoreAndTimeBox();
@@ -25,7 +26,9 @@ MainWindow::MainWindow()
 //    connect(buttonGroup, SIGNAL(buttonClicked(int)), board, SLOT(slotEnterNumber(int)));
     connect(sudoku, SIGNAL(signalFinishedGame()), this, SLOT(slotFinishGame()));
     connect(gameOver, SIGNAL(signalEndGame()), qApp, SLOT(quit()));
-    connect(gameOver, SIGNAL(signalNewGame()), sudoku, SLOT(loadSudoku()));
+//    connect(gameOver, SIGNAL(signalNewGame()), sudoku, SLOT(loadSudoku()));
+    connect(gameOver, SIGNAL(signalNewGame()), this, SLOT(slotNewGame()));
+    connect(newGame, SIGNAL(signalNewGame(int)), sudoku, SLOT(slotLoadSudoku(int)));
 
     setLayout(mainLayout);
     setMinimumSize(550, 650);
@@ -43,7 +46,7 @@ void MainWindow::createMenu() {
 
     menuBar->addMenu(fileMenu);
 
-    connect(newSudokuAction, SIGNAL(triggered()), sudoku, SLOT(slotLoadSudoku()));
+    connect(newSudokuAction, SIGNAL(triggered()), this, SLOT(slotNewGame()));
     connect(exitAction, SIGNAL(triggered()), this, SLOT(accept()));
 }
 
@@ -80,6 +83,13 @@ void MainWindow::createControlGroupBox() {
 }
 
 void MainWindow::slotFinishGame() {
+    qDebug() << "FinishGame Score: " << score->getScore();
+    gameOver->setScore(score->getScore());
     gameOver->exec();
+}
+
+void MainWindow::slotNewGame()
+{
+    newGame->exec();
 }
 
