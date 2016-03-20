@@ -1,3 +1,9 @@
+/* ScoreWidget displays the score from the ScoreLogic.
+ * With the slots the current score and multiplier gets in- or decreased.
+ *
+ * Author: Jerome Wirth
+ * Matrikel-Nr.: 532939
+ */
 #ifndef SCOREWIDGET_H
 #define SCOREWIDGET_H
 

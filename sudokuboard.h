@@ -1,3 +1,9 @@
+/*
+ * SudokuBoard draws a Board onto the screen.
+ *
+ * Author: Jerome Wirth
+ * Matrikel-Nr.: 532939
+ */
 #ifndef SUDOKUBOARD_H
 #define SUDOKUBOARD_H
 

@@ -1,3 +1,8 @@
+/* SudokuSolver gets a 9*9 array and solves it through backtracing.
+ *
+ * Author: Jerome Wirth
+ * Matrikel-Nr.: 532939
+ */
 #ifndef SUDOKUSOLVER_H
 #define SUDOKUSOLVER_H
 

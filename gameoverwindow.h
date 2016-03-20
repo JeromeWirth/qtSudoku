@@ -1,3 +1,17 @@
+/*
+ * GameOverWindow will be displayed, after the game is finished.
+ * It is not important, if the User has finished it, or he choosed
+ * to let it solve by the CPU.
+ *
+ * the GameOverWindow will ask the User for his name, and afte he entered
+ * his name, his score will be displayed, and the top 5 players.
+ *
+ * After that, the user can choose to play a new game, or quit the game.
+ *
+ * Author: Jerome Wirth
+ * Matrikel-Nr.: 532939
+ */
+
 #ifndef GAMEOVERWINDOW_H
 #define GAMEOVERWINDOW_H
 

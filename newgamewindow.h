@@ -1,3 +1,12 @@
+/*
+ * The NewGameClas sets up the difficulty. The user can choose between 3
+ * difficulty settings: Easy, Normal and Hard.
+ * A Signal, with the information on which button was pressed will be send to the MainWindow,
+ * where it gets connected to the SudokuWidget to load a new Sudoku with the correct difficulty.
+ *
+ * Author: Jerome Wirth
+ * Matrikel-Nr.: 532939
+ */
 #ifndef NEWGAMEWINDOW_H
 #define NEWGAMEWINDOW_H
 

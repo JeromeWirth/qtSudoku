@@ -1,6 +1,6 @@
 #include "sudokuwidget.h"
 
-SudokuWidget::SudokuWidget(QWidget *parent)
+SudokuWidget::SudokuWidget()
 {
     board = new SudokuBoard();
     scene = new QGraphicsScene();
@@ -144,4 +144,19 @@ void SudokuWidget::slotLoadSudoku(int difficult) {
 
     loader->loadLevel(path.getFilePath());
     displaySudoku();
+}
+
+
+void SudokuWidget::slotSolveSudoku() {
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            if(!items[row][col]->getStatus()) {
+                int number = loader->getNumber(row, col, true);
+                items[row][col]->setNumber(number);
+                items[row][col]->setStatus(true);
+            }
+        }
+    }
+
+    emit signalFinishedGame();
 }

@@ -1,3 +1,14 @@
+/*
+ * In the MainWindow everything comes together, it has a MenuBar,
+ * in which the user can start a new sudoku, solve the current one or
+ * exit the game.
+ *
+ * The MainWindow has two sections: The Timer and Score Box and the SudokuBoard
+ *
+ * Author: Jerome Wirth
+ * Matrikel-Nr.: 582939
+ */
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -25,24 +36,23 @@ public:
 private:
     void createMenu();
     void createScoreAndTimeBox();
-    void createControlGroupBox();
     void createNewGamePopup();
 
-    QMenuBar *menuBar;
-    QGroupBox *scoreAndTimeBox;
-    QGroupBox *controlGroupBox;
-    QButtonGroup *buttonGroup;
-    QPushButton *buttons[9];
+    QMenuBar        *menuBar;
+    QGroupBox       *scoreAndTimeBox;
+    QGroupBox       *controlGroupBox;
+    QButtonGroup    *buttonGroup;
 
-    QMenu *fileMenu;
-    QAction *exitAction;
-    QAction *newSudokuAction;
-    NewGameWindow *newGame;
+    QMenu           *fileMenu;
+    QAction         *exitAction;
+    QAction         *newSudokuAction;
+    QAction         *solveSudokuAction;
 
-    TimerWidget *timer;
-    ScoreWidget *score;
-    SudokuWidget *sudoku;
-    GameOverWindow *gameOver;
+    TimerWidget     *timer;
+    ScoreWidget     *score;
+    SudokuWidget    *sudoku;
+    NewGameWindow   *newGame;
+    GameOverWindow  *gameOver;
 
 
 signals:

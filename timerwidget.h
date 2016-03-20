@@ -1,3 +1,11 @@
+/*
+ * TimerWidget display a timer, wich gets decreased every second,
+ * when a new Sudoku is loaded, the timer resets.
+ *
+ * Author: Jerome Wirth
+ * Matrikel-Nr.: 532939
+ */
+
 #ifndef TIMERWIDGET_H
 #define TIMERWIDGET_H
 

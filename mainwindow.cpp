@@ -16,17 +16,14 @@ MainWindow::MainWindow()
     mainLayout->addWidget(scoreAndTimeBox);
 
     mainLayout->addWidget(sudoku);
-    // mainLayout->addWidget(controlGroupBox);
 
     connect(sudoku, SIGNAL(signalCorrectNumber()), score, SLOT(slotCorrectNumber()));
     connect(sudoku, SIGNAL(signalFalseNumber()), score, SLOT(slotFalseNumber()));
-    connect(timer, SIGNAL(signal5ScondsPass()), score, SLOT(slotDecreaseMultiplier()));
     connect(sudoku, SIGNAL(signalNewSudoku()), score, SLOT(slotResetScore()));
     connect(sudoku, SIGNAL(signalNewSudoku()), timer, SLOT(slotResetTimer()));
-//    connect(buttonGroup, SIGNAL(buttonClicked(int)), board, SLOT(slotEnterNumber(int)));
     connect(sudoku, SIGNAL(signalFinishedGame()), this, SLOT(slotFinishGame()));
+    connect(timer, SIGNAL(signal5ScondsPass()), score, SLOT(slotDecreaseMultiplier()));
     connect(gameOver, SIGNAL(signalEndGame()), qApp, SLOT(quit()));
-//    connect(gameOver, SIGNAL(signalNewGame()), sudoku, SLOT(loadSudoku()));
     connect(gameOver, SIGNAL(signalNewGame()), this, SLOT(slotNewGame()));
     connect(newGame, SIGNAL(signalNewGame(int)), sudoku, SLOT(slotLoadSudoku(int)));
 
@@ -41,12 +38,14 @@ void MainWindow::createMenu() {
 
     fileMenu = new QMenu(tr("&File"), this);
 
-    newSudokuAction = fileMenu->addAction(tr("N&ew Sudoku"));
-    exitAction = fileMenu->addAction(tr("E&xit"));
+    newSudokuAction = fileMenu->addAction(tr("Neus Sudoku"));
+    solveSudokuAction = fileMenu->addAction(tr("Sudoku Lösen"));
+    exitAction = fileMenu->addAction(tr("Beenden"));
 
     menuBar->addMenu(fileMenu);
 
     connect(newSudokuAction, SIGNAL(triggered()), this, SLOT(slotNewGame()));
+    connect(solveSudokuAction, SIGNAL(triggered()), sudoku, SLOT(slotSolveSudoku()));
     connect(exitAction, SIGNAL(triggered()), this, SLOT(accept()));
 }
 
@@ -61,25 +60,6 @@ void MainWindow::createScoreAndTimeBox() {
     layout->addWidget(timer);
 
     scoreAndTimeBox->setLayout(layout);
-}
-
-void MainWindow::createControlGroupBox() {
-    controlGroupBox = new QGroupBox(tr("Controls"));
-    QHBoxLayout *layout = new QHBoxLayout;
-    buttonGroup = new QButtonGroup;
-//    QPixmap bBackground(":/images/images/%1.png");
-
-    for (int i = 0; i < 9; ++i) {
-//        buttons[i] = new QPushButton(tr("%1").);
-        buttons[i] = new QPushButton();
-        buttons[i]->setIcon(QIcon(QPixmap(tr(":/files/images/%1button.png").arg(i+1))));
-        buttons[i]->setIconSize(QSize(48, 48));
-        buttons[i]->setFixedSize(QSize(48, 48));
-        layout->addWidget(buttons[i]);
-        buttonGroup->addButton(buttons[i]);
-    }
-
-    controlGroupBox->setLayout(layout);
 }
 
 void MainWindow::slotFinishGame() {

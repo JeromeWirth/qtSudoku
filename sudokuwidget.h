@@ -1,3 +1,11 @@
+/*
+ * SudokuWidget holds the SudokuBoard and the SudokuItems.
+ * The Class iterates through the array from the loaded Sudoku
+ * and places each item on to its corresponding position.
+ *
+ * Author: Jerome Wirth
+ * Matrikel-Nr.: 532939
+ */
 #ifndef SUDOKUWIDGET_H
 #define SUDOKUWIDGET_H
 
@@ -18,7 +26,7 @@ class SudokuWidget : public QWidget
     Q_OBJECT
 
 public:
-    explicit SudokuWidget(QWidget *parent = 0);
+    explicit SudokuWidget();
 
 private:
     QGraphicsView   *view;
@@ -45,6 +53,7 @@ public slots:
     void slotCheckInput();
     void loadSudoku();
     void slotLoadSudoku(int difficult);
+    void slotSolveSudoku();
 
 };
 
