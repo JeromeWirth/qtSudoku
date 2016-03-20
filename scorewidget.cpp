@@ -24,6 +24,11 @@ void ScoreWidget::updateScore() {
     multiplierLabel->setText(multiplierString);
 }
 
+int ScoreWidget::getScore()
+{
+    return scoreLogic->getScore();
+}
+
 void ScoreWidget::slotCorrectNumber() {
     scoreLogic->increaseScore(1);
 

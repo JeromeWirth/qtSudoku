@@ -16,6 +16,8 @@ class ScoreWidget : public QWidget
 public:
     explicit ScoreWidget(QWidget *parent = 0);
 
+    int getScore();
+
 private:    
     ScoreLogic *scoreLogic;
     QLabel *scoreLabel;
