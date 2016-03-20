@@ -2,12 +2,16 @@
 
 GameOverWindow::GameOverWindow()
 {
-    text = new QLabel();
-    endGame = new QPushButton("Spiel Beenden");
-    newGame = new QPushButton("Neues Spiel");
-    askName = new QLabel("Name:");
-    insertName = new QLineEdit();
-    okName = new QPushButton("OK");
+    text        = new QLabel();
+    endGame     = new QPushButton("Spiel Beenden");
+    newGame     = new QPushButton("Neues Spiel");
+    askName     = new QLabel("Name:");
+    insertName  = new QLineEdit();
+    okName      = new QPushButton("OK");
+    leaderBoard = new LeaderBoard();
+    ranking     = new QLabel;
+
+    ranking->setWordWrap(true);
 
     playerLayout = new QHBoxLayout;
     buttonLayout = new QHBoxLayout;
@@ -26,6 +30,7 @@ GameOverWindow::GameOverWindow()
 
     layout->addLayout(playerLayout);
     layout->addWidget(text);
+    layout->addWidget(ranking);
     layout->addLayout(buttonLayout);
 
     this->setLayout(layout);
@@ -36,18 +41,35 @@ GameOverWindow::GameOverWindow()
     connect(newGame, SIGNAL(clicked(bool)), this, SLOT(close()));
 }
 
-void GameOverWindow::setText() {
-    QString a = "Glückwunsche " + m_name + " du hast " + QString::number(m_score) + " Punkte erreicht!";
-
-    text->setText(a);
+void GameOverWindow::setScore(int score)
+{
+    m_score = score;
 }
 
 void GameOverWindow::slotAcceptInput() {
+    User users[5];
+    QString rankings;
+
     insertName->setDisabled(true);
+    okName->setDisabled(true);
 
     m_name = insertName->text();
+    QString score = QString::number(m_score);
 
-    QString s = "Glückwunsche " + m_name + " du hast Punkte erreicht!";
+    QString s = "Glückwunsche " + m_name + " du hast Punkte " + score + " erreicht!";
 
     text->setText(s);
+
+    leaderBoard->insertRaninking(m_name, m_score);
+    leaderBoard->printRankings(users);
+    leaderBoard->closeConn();
+
+    for (int i = 0; i < 5; i++) {
+        QString temp = QString("%1. Platz: %2 mit %3 Punkten!").arg(i+1).arg(users[i].getName()).arg(users[i].getScore())
+                + "\n";
+        rankings.append(temp);
+        qDebug() << temp;
+    }
+
+    ranking->setText(rankings);
 }

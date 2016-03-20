@@ -8,14 +8,16 @@
 #include <QPushButton>
 #include <QLineEdit>
 
+#include "leaderboard.h"
+#include "user.h"
+
 class GameOverWindow : public QDialog
 {
     Q_OBJECT
 
 public:
     GameOverWindow();
-    void setText();
-
+    void setScore(int score);
 
 private:
     QString m_name;
@@ -25,11 +27,13 @@ private:
     QHBoxLayout *playerLayout;
     QVBoxLayout *layout;
     QLabel      *text;
+    QLabel      *ranking;
     QPushButton *endGame;
     QPushButton *newGame;
     QPushButton *okName;
     QLabel      *askName;
     QLineEdit   *insertName;
+    LeaderBoard *leaderBoard;
 
 signals:
     void signalEndGame();
