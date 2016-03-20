@@ -15,8 +15,11 @@ SOURCES += \
     sudokuboard.cpp \
     sudokuwidget.cpp \
     sudokuloader.cpp \
-    leaderboardlogic.cpp \
-    gameoverwindow.cpp
+    gameoverwindow.cpp \
+    newgamewindow.cpp \
+    randompathgenerator.cpp \
+    leaderboard.cpp \
+    user.cpp
 
 HEADERS += \
     scorewidget.h \
@@ -28,8 +31,11 @@ HEADERS += \
     sudokuboard.h \
     sudokuwidget.h \
     sudokuloader.h \
-    leaderboardlogic.h \
-    gameoverwindow.h
+    gameoverwindow.h \
+    newgamewindow.h \
+    randompathgenerator.h \
+    leaderboard.h \
+    user.h
 
 CONFIG += c++11
 QMAKE_CXXFLAGS += -std=c++0x
