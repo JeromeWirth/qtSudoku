@@ -20,7 +20,7 @@ public:
     QString getFilePath();
 
 private:
-    QString m_file;
+    QString mFile;
 
     int createRandomNumber();
 

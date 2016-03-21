@@ -1,15 +1,19 @@
 #include "sudokuitem.h"
 
+/**
+ * @brief SudokuItem::SudokuItem
+ * Konstruktor, der die Klassen-Variablen initalisiert
+ */
 SudokuItem::SudokuItem()
 {
-    m_row = 0;
-    m_col = 0;
-    m_number = 0;
+    mRow = 0;
+    mCol = 0;
+    mNumber = 0;
     pressed = false;
-    m_status = false;
+    mStatus = false;
 
     number = new QGraphicsTextItem(this);
-    setNumber(m_number);
+    setNumber(mNumber);
 }
 
 QRectF SudokuItem::boundingRect() const
@@ -17,6 +21,16 @@ QRectF SudokuItem::boundingRect() const
     return QRectF(2, 2, 50, 50);
 }
 
+/**
+ * @brief SudokuItem::paint
+ * Zeichnet ein Feld für das Sudoku-Brett, je nach Status wird es ausgemalt und enthält
+ * eine Nummer, oder es hat die gleich Farbe wie der Hintgrund, sodass man es immernoch
+ * anklicken, aber nicht sehen kann.
+ *
+ * @param painter
+ * @param option
+ * @param widget
+ */
 void SudokuItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     QRectF rect = boundingRect();
@@ -25,7 +39,7 @@ void SudokuItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     QPen penCorrect(Qt::black);
     QPen penIncorrect(Qt::white);
 
-    if(m_status) {
+    if(mStatus) {
         penCorrect.setWidth(3);
         painter->fillRect(rect, brushCorrect);
         painter->setPen(penCorrect);
@@ -38,26 +52,45 @@ void SudokuItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
     }
 }
 
+/**
+ * @brief SudokuItem::setRow
+ * Speichert die aktuelle Reihe des Items
+ *
+ * @param row interge, mit aktueller Reihen-Zahl
+ */
 void SudokuItem::setRow(int row)
 {
-    m_row = row;
+    mRow = row;
 }
 
+/**
+ * @brief SudokuItem::setCol
+ * Speichert die aktuelle Spalte des Items
+ *
+ * @param col integer mit aktueller Spalten-Zahl
+ */
 void SudokuItem::setCol(int col) {
-    m_col = col;
+    mCol = col;
 }
 
+/**
+ * @brief SudokuItem::setNumber
+ * Schreibt die Nummer in ein SudokuItem, falls die Nummer des geladenen
+ * Sudokus an der Stelle "0" beträgt, wird nichts reingeschrieben.
+ *
+ * @param num integer, mit Zahl des Sudoku Feldes
+ */
 void SudokuItem::setNumber(int num)
 {
-    m_number = num;
+    mNumber = num;
 
     QFont font;
     font.setPointSize(40);
 
-    if (m_number == 0) {
+    if (mNumber == 0) {
         number->setPlainText("");
     } else {
-        number->setPlainText(QString::number(m_number));
+        number->setPlainText(QString::number(mNumber));
     }
 
     number->setDefaultTextColor(Qt::black);
@@ -66,31 +99,68 @@ void SudokuItem::setNumber(int num)
     number->setY(this->boundingRect().center().y() - number->boundingRect().center().y());
 }
 
+/**
+ * @brief SudokuItem::getRow
+ * Gibt die aktuelle Reihe zurück
+ *
+ * @return integer, mit aktueller Reihen-Zahl
+ */
 int SudokuItem::getRow()
 {
-    return m_row;
+    return mRow;
 }
 
+/**
+ * @brief SudokuItem::getCol
+ * Gibt die aktuelle Spalte zurück
+ *
+ * @return integer, mit aktueller Spalten-Zahl
+ */
 int SudokuItem::getCol() {
-    return m_col;
+    return mCol;
 }
 
+/**
+ * @brief SudokuItem::getNumber
+ * Gibt die Nummer des SudokuItems zurück
+ *
+ * @return integer, mit der Nummer
+ */
 int SudokuItem::getNumber()
 {
-    return m_number;
+    return mNumber;
 }
 
+/**
+ * @brief SudokuItem::setStatus
+ * Setzt den Status für das SudokuItem
+ *
+ * @param status bool, ob die Zahl schon gesetzt wurde.
+ */
 void SudokuItem::setStatus(bool status)
 {
-    m_status = status;
+    mStatus = status;
 }
 
+/**
+ * @brief SudokuItem::getStatus
+ * Gibt den Status des Feldes wieder zurück
+ *
+ * @return bool, mit gesetzten Status
+ */
 bool SudokuItem::getStatus()
 {
-    return m_status;
+    return mStatus;
 }
 
+/**
+ * @brief SudokuItem::mousePressEvent
+ * mousePressEvent wurde so überschrieben, das es ein Signal auslöst, welche die
+ * aktuelle Reihe und Spalte übergibt.
+ *
+ * @param event
+ */
 void SudokuItem::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
-    emit signalOnClick(m_row, m_col);
+    emit signalOnClick(mRow, mCol);
 }

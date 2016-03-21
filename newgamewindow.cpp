@@ -1,5 +1,11 @@
 #include "newgamewindow.h"
 
+/**
+ * @brief NewGameWindow::NewGameWindow
+ * Erstellt ein Fenster, welches den Spieler nach dem Schwierigkeitsgrad fragt.
+ * Je nachdem welcher Knopf gedrückt wurde, wird ein Signal mit varrierender ID
+ * ausgesendet.
+ */
 NewGameWindow::NewGameWindow()
 {
     text = new QLabel("Schwierigkeitsgrad wählen:");

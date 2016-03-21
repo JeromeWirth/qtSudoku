@@ -25,9 +25,9 @@ public:
     int getScore();
 
 private:    
-    ScoreLogic *scoreLogic;
-    QLabel *scoreLabel;
-    QLabel *multiplierLabel;
+    ScoreLogic  *scoreLogic;
+    QLabel      *scoreLabel;
+    QLabel      *multiplierLabel;
     QHBoxLayout *hLayout;
 
     void updateScore();

@@ -22,11 +22,12 @@ public:
     explicit TimerWidget(QWidget *parent = 0);
 
 private:
-    QTimer *m_timer;
-    QTime *m_timeValue;
-    QLabel *m_display;
+    QTimer      *mTimer;
+    QTime       *mTimeValue;
+    QLabel      *mDisplay;
     QHBoxLayout *hLayout;
-    int m_seconds = 0;
+
+    int mSeconds = 0;
 
 signals:
     void signal5ScondsPass();

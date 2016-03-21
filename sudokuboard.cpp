@@ -9,6 +9,14 @@ QRectF SudokuBoard::boundingRect() const
     return QRectF(0, 0, 510, 510);
 }
 
+/**
+ * @brief SudokuBoard::paint
+ * Zeichnet die Linien für das Sudoku Feld
+ *
+ * @param painter
+ * @param option
+ * @param widget
+ */
 void SudokuBoard::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     QPen pen(Qt::black, 4, Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin);

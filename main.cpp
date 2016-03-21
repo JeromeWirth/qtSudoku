@@ -1,4 +1,4 @@
-/*
+/**
  * qtSudoku, is a simple Sudoku Game, written in C++ and the Qt-Framework.
  * After the Programm is started, the User can solve his first Sudoku Baord,
  * or start a new game, where he can choose the difficulty.
@@ -12,7 +12,7 @@
  * to the database, when he got enough points, he will be displayed in the
  * top 5 players ranking.
  *
- * Author: Jerome Wirth
+ * @author Jerome Wirth
  * Matrikel-Nr.: 582939
  */
 

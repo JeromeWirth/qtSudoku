@@ -4,11 +4,11 @@ SudokuSolver::SudokuSolver(int grid[][9])
 {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
-            m_board[row][col] = grid[row][col];
+            mBoard[row][col] = grid[row][col];
         }
     }
 
-    solveSudoku(m_board);
+    solveSudoku(mBoard);
 }
 
 bool SudokuSolver::solveSudoku(int grid[9][9]) {
@@ -22,14 +22,14 @@ bool SudokuSolver::solveSudoku(int grid[9][9]) {
     for (int num = 1; num <= 9; num++) {
         // Wenn es gut aussieht
         if (isSafe(row, col, num)) {
-            m_board[row][col] = num;
+            mBoard[row][col] = num;
 
             if (solveSudoku(grid)) {
                 return true;
             }
 
             // Fehler, lösche zahl und versuche es mit neuer
-            m_board[row][col] = 0;
+            mBoard[row][col] = 0;
         }
     }
     return false; // this triggers backtracking
@@ -38,7 +38,7 @@ bool SudokuSolver::solveSudoku(int grid[9][9]) {
 bool SudokuSolver::findUnassignedLocation(int &row, int &col) {
     for (row = 0; row < 9; row++) {
         for (col = 0; col < 9; col++) {
-            if(m_board[row][col] == 0) {
+            if(mBoard[row][col] == 0) {
                 return true;
             }
         }
@@ -54,7 +54,7 @@ bool SudokuSolver::isSafe(int row, int col, int num) {
 
 bool SudokuSolver::usedInRow(int row, int num) {
     for(int col = 0; col < 9; col++) {
-        if(m_board[row][col] == num)
+        if(mBoard[row][col] == num)
             return true;
     }
     return false;
@@ -62,7 +62,7 @@ bool SudokuSolver::usedInRow(int row, int num) {
 
 bool SudokuSolver::usedInCol(int col, int num) {
     for(int row = 0; row < 9; row++) {
-        if(m_board[row][col] == num)
+        if(mBoard[row][col] == num)
             return true;
     }
     return false;
@@ -71,7 +71,7 @@ bool SudokuSolver::usedInCol(int col, int num) {
 bool SudokuSolver::usedInBox(int boxStartRow, int boxStartCol, int num) {
     for(int row = 0; row < 3; row++) {
         for (int col = 0; col < 3; col++) {
-            if(m_board[row+boxStartRow][col+boxStartCol] == num)
+            if(mBoard[row+boxStartRow][col+boxStartCol] == num)
                 return true;
         }
     }
@@ -89,7 +89,7 @@ void SudokuSolver::printGrid() {
             if (col%3 == 0 && col != 0) {
                 cout << " ";
             }
-                cout << m_board[row][col];
+                cout << mBoard[row][col];
 
         }
         cout << endl;
@@ -99,5 +99,5 @@ void SudokuSolver::printGrid() {
 
 int SudokuSolver::getNumber(int row, int col)
 {
-    return m_board[row][col];
+    return mBoard[row][col];
 }

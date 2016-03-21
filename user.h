@@ -20,8 +20,8 @@ public:
     void setScore(int score);
 
 private:
-    QString m_name;
-    int m_score;
+    QString mName;
+    int mScore;
 };
 
 #endif // USER_H

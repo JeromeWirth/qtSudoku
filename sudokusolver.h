@@ -21,7 +21,7 @@ public:
     int getNumber(int row, int col);
 
 private:
-    int m_board[9][9];
+    int mBoard[9][9];
 
     bool findUnassignedLocation(int &row, int &col);
     bool isSafe(int row, int col, int num);

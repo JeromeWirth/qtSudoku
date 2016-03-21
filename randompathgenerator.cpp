@@ -1,5 +1,12 @@
 #include "randompathgenerator.h"
 
+/**
+ * @brief RandomPathGenerator::RandomPathGenerator
+ * Konstruktor schreibt gleich den passenden prefix für den Datei-Pfad in
+ * seine Member-Variable
+ *
+ * @param diff die ID für den gewählten Schwierigkeitsgrad
+ */
 RandomPathGenerator::RandomPathGenerator(int diff) {
     QString tempDiff;
 
@@ -19,13 +26,26 @@ RandomPathGenerator::RandomPathGenerator(int diff) {
 
     int rndNumber = createRandomNumber();
 
-    m_file = "level/" + QString("%1").arg(tempDiff) + QString("-%1.txt").arg(rndNumber, 3, 10, QLatin1Char('0'));
+    mFile = "level/" + QString("%1").arg(tempDiff) + QString("-%1.txt").arg(rndNumber, 3, 10, QLatin1Char('0'));
 }
 
+/**
+ * @brief RandomPathGenerator::getFilePath
+ * Gibt den erstellten Pfad zurück
+ *
+ * @return gibt QString, welcher den erstellten Pfad enthält
+ */
 QString RandomPathGenerator::getFilePath() {
-    return m_file;
+    return mFile;
 }
 
+/**
+ * @brief RandomPathGenerator::createRandomNumber
+ * Gibt eine zufällige zahl zurück, da es bisher nur 3 Level pro Schwierigkeitsgrad vorhanden sind
+ * beschränkt sich die Zahl zwischen 1 und 3.
+ *
+ * @return integer der zufälligen zahl zwischen 1 und 3
+ */
 int RandomPathGenerator::createRandomNumber() {
     random_device rd;
     mt19937 rng(rd());

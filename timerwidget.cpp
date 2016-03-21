@@ -2,35 +2,35 @@
 
 TimerWidget::TimerWidget(QWidget *parent) : QWidget(parent)
 {
-    m_timer = new QTimer();
-    m_timeValue = new QTime(0,0,0);
-    m_display = new QLabel();
+    mTimer = new QTimer();
+    mTimeValue = new QTime(0,0,0);
+    mDisplay = new QLabel();
     hLayout = new QHBoxLayout;
 
-    m_display->setText(m_timeValue->toString("mm:ss"));
+    mDisplay->setText(mTimeValue->toString("mm:ss"));
 
-    hLayout->addWidget(m_display);
+    hLayout->addWidget(mDisplay);
 
     this->setLayout(hLayout);
 
-    m_timer->start(1000);
+    mTimer->start(1000);
 
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(slotShowTimer()));
+    connect(mTimer, SIGNAL(timeout()), this, SLOT(slotShowTimer()));
 }
 
 void TimerWidget::slotShowTimer() {
-    this->m_timeValue->setHMS(0, this->m_timeValue->addSecs(1).minute(),
-            this->m_timeValue->addSecs(1).second());
-    this->m_display->setText(m_timeValue->toString("mm:ss"));
+    this->mTimeValue->setHMS(0, this->mTimeValue->addSecs(1).minute(),
+            this->mTimeValue->addSecs(1).second());
+    this->mDisplay->setText(mTimeValue->toString("mm:ss"));
 
-    m_seconds++;
+    mSeconds++;
 
-    if (m_seconds%5 == 0) {
+    if (mSeconds%5 == 0) {
         emit signal5ScondsPass();
     }
 }
 
 void TimerWidget::slotResetTimer() {
-    this->m_timeValue->setHMS(0,0,0);
-    this->m_display->setText(this->m_timeValue->toString("mm:ss"));
+    this->mTimeValue->setHMS(0,0,0);
+    this->mDisplay->setText(this->mTimeValue->toString("mm:ss"));
 }

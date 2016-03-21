@@ -1,5 +1,9 @@
 #include "leaderboard.h"
 
+/**
+ * @brief LeaderBoard::LeaderBoard
+ * Der Konstruktur verbindet das Programm mit der SQL-Datenbank
+ */
 LeaderBoard::LeaderBoard()
 {
     db = QSqlDatabase::addDatabase("QPSQL");
@@ -11,6 +15,13 @@ LeaderBoard::LeaderBoard()
     ok = db.open();
 }
 
+/**
+ * @brief LeaderBoard::printRankings
+ * Funktion enthält ein Array aus 5 Usern,
+ * dann wir die DB mit den 5 besten Spielern abgefragt und in das Array geschrieben.
+ *
+ * @param users Array auf 5 Usern, welche mit den Daten der DB gefüllt wird
+ */
 void LeaderBoard::printRankings(User users[5]) {
     if (ok) {
         QSqlQuery query(db);
@@ -28,11 +39,16 @@ void LeaderBoard::printRankings(User users[5]) {
             qDebug() << "Name: " << name << ", Punkte: " << score;
             i++;
         }
-    } else {
-        qDebug() << "ERROR DB";
     }
 }
 
+/**
+ * @brief LeaderBoard::insertRaninking
+ * Schreibt aktuellen Spieler und Punkte in die Datenbank
+ *
+ * @param name QString, welcher den Namen enthält
+ * @param score integer, mit den aktuellen Punkten
+ */
 void LeaderBoard::insertRaninking(QString name, int score)
 {
     if (ok) {
@@ -46,6 +62,10 @@ void LeaderBoard::insertRaninking(QString name, int score)
     }
 }
 
+/**
+ * @brief LeaderBoard::closeConn
+ * Schließt die verbindung zur Datenbank wieder.
+ */
 void LeaderBoard::closeConn()
 {
     QString connection;

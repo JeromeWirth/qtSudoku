@@ -8,7 +8,7 @@
  *
  * After that, the user can choose to play a new game, or quit the game.
  *
- * Author: Jerome Wirth
+ * @author Jerome Wirth
  * Matrikel-Nr.: 532939
  */
 
@@ -34,8 +34,8 @@ public:
     void setScore(int score);
 
 private:
-    QString m_name;
-    int m_score;
+    QString mName;
+    int mScore;
 
     QHBoxLayout *buttonLayout;
     QHBoxLayout *playerLayout;
@@ -48,6 +48,9 @@ private:
     QLabel      *askName;
     QLineEdit   *insertName;
     LeaderBoard *leaderBoard;
+
+    void printText();
+    void printLeaderBoard();
 
 signals:
     void signalEndGame();

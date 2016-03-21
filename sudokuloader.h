@@ -18,8 +18,8 @@ public:
     int getSudoku();
 
 private:
-    int m_unsolvedBoard[9][9];
-    int m_solvedBoard[9][9];
+    int mUnsovledBoard[9][9];
+    int mSolvedBoard[9][9];
 
     void solveSudoku();
 };
