@@ -26,7 +26,7 @@ RandomPathGenerator::RandomPathGenerator(int diff) {
 
     int rndNumber = createRandomNumber();
 
-    mFile = "level/" + QString("%1").arg(tempDiff) + QString("-%1.txt").arg(rndNumber, 3, 10, QLatin1Char('0'));
+    mFile = ":files/level/" + QString("%1").arg(tempDiff) + QString("-%1.txt").arg(rndNumber, 3, 10, QLatin1Char('0'));
 }
 
 /**

@@ -38,7 +38,9 @@ HEADERS += \
     user.h
 
 CONFIG += c++11
-QMAKE_CXXFLAGS += -std=c++0x
+#CONFIG -= app_bundle
+
+#QMAKE_CXXFLAGS += -std=c++0x
 
 RESOURCES += \
     files.qrc

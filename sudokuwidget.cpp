@@ -9,7 +9,7 @@ SudokuWidget::SudokuWidget()
     board = new SudokuBoard();
     scene = new QGraphicsScene();
     view = new QGraphicsView(this);
-    loader = new SudokuLoader("level/003.txt");
+    loader = new SudokuLoader(":files/level/E-001.txt");
     input = new QLineEdit(this);
 
     QFont font;

@@ -2,5 +2,14 @@
     <qresource prefix="/files">
         <file>sounds/success.wav</file>
         <file>sounds/fail.wav</file>
+        <file>level/E-001.txt</file>
+        <file>level/E-002.txt</file>
+        <file>level/E-003.txt</file>
+        <file>level/H-001.txt</file>
+        <file>level/H-002.txt</file>
+        <file>level/H-003.txt</file>
+        <file>level/M-001.txt</file>
+        <file>level/M-002.txt</file>
+        <file>level/M-003.txt</file>
     </qresource>
 </RCC>
