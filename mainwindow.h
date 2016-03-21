@@ -18,6 +18,7 @@
 #include <QWidget>
 #include <QMenuBar>
 #include <QGroupBox>
+#include <QMediaPlayer>
 
 #include "sudokuwidget.h"
 #include "timerwidget.h"
@@ -41,12 +42,12 @@ private:
     QMenuBar        *menuBar;
     QGroupBox       *scoreAndTimeBox;
     QGroupBox       *controlGroupBox;
-    QButtonGroup    *buttonGroup;
 
     QMenu           *fileMenu;
     QAction         *exitAction;
     QAction         *newSudokuAction;
     QAction         *solveSudokuAction;
+    QMediaPlayer    *mediaPlayer;
 
     TimerWidget     *timer;
     ScoreWidget     *score;
@@ -61,6 +62,8 @@ signals:
 public slots:
     void slotFinishGame();
     void slotNewGame();
+    void slotSuccessSound();
+    void slotFailSound();
 };
 
 #endif // MAINWINDOW_H

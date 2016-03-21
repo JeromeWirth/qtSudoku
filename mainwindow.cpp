@@ -7,9 +7,10 @@
  */
 MainWindow::MainWindow()
 {
-    sudoku = new SudokuWidget();
-    gameOver = new GameOverWindow();
-    newGame = new NewGameWindow();
+    sudoku      = new SudokuWidget();
+    gameOver    = new GameOverWindow();
+    newGame     = new NewGameWindow();
+    mediaPlayer = new QMediaPlayer();
 
     createMenu();
     createScoreAndTimeBox();
@@ -22,6 +23,8 @@ MainWindow::MainWindow()
 
     mainLayout->addWidget(sudoku);
 
+    connect(sudoku,     SIGNAL(signalCorrectNumber()),  this,   SLOT(slotSuccessSound()));
+    connect(sudoku,     SIGNAL(signalFalseNumber()),    this,   SLOT(slotFailSound()));
     connect(sudoku,     SIGNAL(signalCorrectNumber()),  score,  SLOT(slotCorrectNumber()));
     connect(sudoku,     SIGNAL(signalFalseNumber()),    score,  SLOT(slotFalseNumber()));
     connect(sudoku,     SIGNAL(signalNewSudoku()),      score,  SLOT(slotResetScore()));
@@ -99,3 +102,22 @@ void MainWindow::slotNewGame()
     newGame->exec();
 }
 
+/**
+ * @brief MainWindow::slotSuccessSound
+ * Spielt eine Ton ab, bei richtig gesetzter Zahl
+ */
+void MainWindow::slotSuccessSound()
+{
+    mediaPlayer->setMedia(QUrl("qrc:/files/sounds/success.wav"));
+    mediaPlayer->play();
+}
+
+/**
+ * @brief MainWindow::slotFailSound
+ * Spielt einen Ton ab, bei falsch gesetzter Zahl
+ */
+void MainWindow::slotFailSound()
+{
+    mediaPlayer->setMedia(QUrl("qrc:/files/sounds/fail.wav"));
+    mediaPlayer->play();
+}

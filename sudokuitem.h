@@ -29,10 +29,10 @@ public:
     bool getStatus();
 
 private:
-    int m_row, m_col, m_number;
+    int mRow, mCol, mNumber;
     QGraphicsTextItem *number;
     bool pressed;
-    bool m_status;
+    bool mStatus;
 
 protected:
     void mousePressEvent(QGraphicsSceneMouseEvent *event);
