@@ -1,4 +1,10 @@
-
+/**
+  * SudokuItem stellt die einzelnen Felder des Sudoku Feldes dar.
+  * Dabei werden Felder, welche noch keine Zahl haben, so dargestellt, dass
+  * sie für den Spieler nicht sichtbar, aber anklickbar sind.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef SUDOKUITEM_H
 #define SUDOKUITEM_H
 

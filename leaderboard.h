@@ -1,16 +1,9 @@
-/*
- * The LeaderBoard Class handles the connections and querys
- * to the PostgreSQL database.
- *
- * The LeaderBoard gets names and scores from the GameOverWindow Class
- * and inserts the data into the database.
- *
- * It also selectes the best 5 sudoku players and sends it to the GameOverWindow.
- *
- * Author: Jerome Wirth
- * Matrikel-Nr.: 582939
- */
-
+/**
+  * Die LeaderBoard-Klasse kümmert sich um die Datenbank-Verbindung, abfragen und
+  * änderungen.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef LEADERBOARD_H
 #define LEADERBOARD_H
 

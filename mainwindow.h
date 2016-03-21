@@ -1,14 +1,13 @@
-/*
- * In the MainWindow everything comes together, it has a MenuBar,
- * in which the user can start a new sudoku, solve the current one or
- * exit the game.
- *
- * The MainWindow has two sections: The Timer and Score Box and the SudokuBoard
- *
- * Author: Jerome Wirth
- * Matrikel-Nr.: 582939
- */
-
+/**
+  * In der MainWindow-Klasse kommt alles zusammen, sie besteht
+  * aus einer Menüleiste, in der der Spieler ein neues Soduku starten,
+  * das aktuelle Sudoku lösen oder das Programm beenden kann.
+  *
+  * Das Hauptfenster ist unterteilt in der Punkt und Zeitanzeige, sowie
+  * dem Sudoku Feld.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 

@@ -1,11 +1,9 @@
-/*
- * SudokuWidget holds the SudokuBoard and the SudokuItems.
- * The Class iterates through the array from the loaded Sudoku
- * and places each item on to its corresponding position.
- *
- * Author: Jerome Wirth
- * Matrikel-Nr.: 532939
- */
+/**
+  * SudokuWidget-Klasse zeigt das Gitternetz an und die darin enthaltenen Felder.
+  * Die Felder werden aus einem Array gelesen, und dargestellt.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef SUDOKUWIDGET_H
 #define SUDOKUWIDGET_H
 

@@ -1,17 +1,17 @@
-/*
- * GameOverWindow will be displayed, after the game is finished.
- * It is not important, if the User has finished it, or he choosed
- * to let it solve by the CPU.
- *
- * the GameOverWindow will ask the User for his name, and afte he entered
- * his name, his score will be displayed, and the top 5 players.
- *
- * After that, the user can choose to play a new game, or quit the game.
- *
- * @author Jerome Wirth
- * Matrikel-Nr.: 532939
- */
-
+/**
+  * GameOverWinow wird angezeigt, nachdem das Sudoku beendet wurde.
+  * Dabei ist es nicht wichtig, ob der Spieler das spiel selber gelöst hat,
+  * oder er es vom Computer hat lösen lassen.
+  *
+  * Das Fenster fragt den Spieler nach seinem Namen, bei Eingabe wird
+  * der Name des Spielers, sowie seine Punktzahl angezeigt, darunter
+  * werden die 5 besten Spieler angezeigt.
+  *
+  * Der Spieler hat dann die möglichkeit ein neues Sudoku zu starten,
+  * oder das Programm zu beenden.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef GAMEOVERWINDOW_H
 #define GAMEOVERWINDOW_H
 

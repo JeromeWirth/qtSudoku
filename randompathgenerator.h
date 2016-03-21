@@ -1,10 +1,9 @@
-/*
- * RandomPathGenerator class generates a random path with the given difficulty.
- * The Path is also formatted by the class, so the SudokuWidget can load a new Sudoku.
- *
- * Author: Jerome Wirth
- * Matrikel-Nr.: 532939
- */
+/**
+  * RandomPathGenerator ereugt einen zufälligen Dateipfad zu einer
+  * vorhanden Datei, um ein neues Sudoku zu laden.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef RANDOMPATHGENERATOR_H
 #define RANDOMPATHGENERATOR_H
 

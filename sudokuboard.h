@@ -1,9 +1,8 @@
-/*
- * SudokuBoard draws a Board onto the screen.
- *
- * Author: Jerome Wirth
- * Matrikel-Nr.: 532939
- */
+/**
+  * SudokuBoard zeichnet ein Gitternetzt, welches das Sudoku Feld darstellt.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef SUDOKUBOARD_H
 #define SUDOKUBOARD_H
 

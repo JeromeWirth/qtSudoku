@@ -1,11 +1,9 @@
-/*
- * TimerWidget display a timer, wich gets decreased every second,
- * when a new Sudoku is loaded, the timer resets.
- *
- * Author: Jerome Wirth
- * Matrikel-Nr.: 532939
- */
-
+/**
+  * TimerWidget-Klasse, zeigt die Zeit an, welche jede Sekunde zunimmt.
+  * Wenn ein neues Sudoku gespielt wird, startet der Timer wieder bei Null.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef TIMERWIDGET_H
 #define TIMERWIDGET_H
 

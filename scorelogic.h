@@ -1,10 +1,10 @@
-/* ScoreLogic handles the calculation of the current score, the multiplier
- * decreases from time to time, that means, that the users has to finish the
- * Sudoku fast, when he wants to get into the leaderboard.
- *
- * @author Jerome Wirth
- * Matrikel-Nr.: 532939
- */
+/**
+  * ScoreLogic übernimmt die berechnung der aktuellen Punktzahl,
+  * der mMultiplier nimmt von Zeit ab, oder wenn der Spieler eine falsche
+  * eingabe getätigt hat.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef SCORELOGIC_H
 #define SCORELOGIC_H
 

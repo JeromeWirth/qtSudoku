@@ -1,3 +1,12 @@
+/**
+  * SudokuLoader läd eine neues Sudoku Feld aus einer Datei, dabei
+  * speichert die Klasse einmal ein gelöstes und ungelöstes Array.
+  *
+  * Das ungelöste Array wird Dargestellt, wenn der benutzer eine Zahl eingibt
+  * wird diese gegen das gelöste Array geprüft und so ermittelt ob die Zahl korrekt ist.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef SUDOKULOADER_H
 #define SUDOKULOADER_H
 

@@ -1,9 +1,9 @@
-/*
- * User Class gets a name and score and will be displayed on the rankings.
- *
- * Author: Jerome Wirth
- * Matrikel-Nr.: 532939
- */
+/**
+  * User-Klasse verwaltet die Spieler, welche am ende eines Sudoku spiels in die
+  * Datenbank eingetragen werden.
+  *
+  * @author Jerome Wirth (532939)
+  */
 #ifndef USER_H
 #define USER_H
 
