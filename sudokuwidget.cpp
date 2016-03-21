@@ -1,5 +1,9 @@
 #include "sudokuwidget.h"
 
+/**
+ * @brief SudokuWidget::SudokuWidget
+ * Erstellt das Widget, welches einmal das Sudoku Feld enthält und die SudokuItems
+ */
 SudokuWidget::SudokuWidget()
 {
     board = new SudokuBoard();
@@ -33,6 +37,12 @@ SudokuWidget::SudokuWidget()
     connect(input, SIGNAL(returnPressed()), this, SLOT(slotCheckInput()));
 }
 
+/**
+ * @brief SudokuWidget::displaySudoku
+ * Platziert die SudokuItems so, dass sie genau auf das Feld passen.
+ * Items die den status auf false gesetzt haben, werden nicht angezeigt
+ * Damit man Nummern eingeben kann, wird jedes Item mit dem mouseEvent Signal verknüpft
+ */
 void SudokuWidget::displaySudoku()
 {
     emit signalNewSudoku();
@@ -71,6 +81,11 @@ void SudokuWidget::displaySudoku()
     }
 }
 
+/**
+ * @brief SudokuWidget::countCorrectNumbers
+ * Zähl und gibt die möglichen Züge, bei 81 ist das Spiel beendet
+ * @return Anzahl der möglichen Züge
+ */
 int SudokuWidget::countCorrectNumbers()
 {
     int correct = 0;
@@ -86,6 +101,15 @@ int SudokuWidget::countCorrectNumbers()
     return correct;
 }
 
+
+/**
+ * @brief SudokuWidget::slotInputNumber
+ * Funktion ermöglicht das eingeben von Zahlen, sobald ein leeres Feld angeklickt wurde
+ * öffnet sich ein QEditLine, welche die größe und position des angeklickten SudokuItems kriegt.
+ *
+ * @param row die Reihe, in die geklickt wurde
+ * @param col die Spalte in die geklickt wurde
+ */
 void SudokuWidget::slotInputNumber(int row, int col)
 {
     input->clear();
@@ -107,6 +131,14 @@ void SudokuWidget::slotInputNumber(int row, int col)
 
 }
 
+/**
+ * @brief SudokuWidget::slotCheckInput
+ * Nachdem der Spieler seine Eingabe mit 'Enter' bestätitgt, wird die eingabe geprüft.
+ * Stimm die Zahl mit der Zahl im gelösten Sudoku überein, kriegt das SudokuItem an dieser
+ * Position den Status True, und wird auf dem Spielfeld angezeigt.
+ *
+ * Nach der eingabe, wird geprüft, ob das Spiel beendet ist.
+ */
 void SudokuWidget::slotCheckInput()
 {
     input->hide();
@@ -132,12 +164,22 @@ void SudokuWidget::slotCheckInput()
     input->clear();
 }
 
+/**
+ * @brief SudokuWidget::loadSudoku
+ * Läd das erste Sudoku-Feld
+ */
 void SudokuWidget::loadSudoku() {
     loader->loadLevel("level/003.txt");
 
     displaySudoku();
 }
 
+/**
+ * @brief SudokuWidget::slotLoadSudoku
+ * Läd ein Sudoku-Feld mit dem angegeben Schwierigkeitsgrad
+ *
+ * @param difficult der Schwierigkeitsgrad
+ */
 void SudokuWidget::slotLoadSudoku(int difficult) {
     RandomPathGenerator path(difficult);
     qDebug() << path.getFilePath();
@@ -147,6 +189,11 @@ void SudokuWidget::slotLoadSudoku(int difficult) {
 }
 
 
+/**
+ * @brief SudokuWidget::slotSolveSudoku
+ * Die Funktion setzt alle verbleibenen SudokuItems auf true,
+ * um das Sudoku lösen zu lassen
+ */
 void SudokuWidget::slotSolveSudoku() {
     for (int row = 0; row < 9; row++) {
         for (int col = 0; col < 9; col++) {
